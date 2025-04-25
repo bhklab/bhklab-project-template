@@ -46,8 +46,8 @@ project_slug:
 
 project_description:
   type: str
-  help: "A short description of your {{ project_name }} project."
-  default: "TODO:: Add a short description of {{ package_name }} here."
+  help: A short description of your {{ project_name }} project.
+  default: "TODO:: Add a short description of {{ project_name }} here."
 
 python_version:
   type: str
