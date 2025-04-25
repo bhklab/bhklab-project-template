@@ -5,31 +5,29 @@
 author_full_name:
   type: str
   help: What is your full name?
-  default: "John Doe"
-  placeholder: "John Doe"
+  placeholder: "Jermiah Joseph"
   validator: "{% from pathjoin('includes', 'validators.jinja') import validate_full_name %}{{ validate_full_name(author_full_name) }}"
 
 author_email:
   type: str
   help: What is your bhklab email address?
-  default: "bhklab.johndoe@example.com"
-  placeholder: "bhklab.johndoe@example.com"
+  default: "{% from pathjoin('includes', 'slugify.jinja') import slugify_email%}{{ slugify_email(author_full_name) }}"
   validator: "{% from pathjoin('includes', 'validators.jinja') import validate_email %}{{ validate_email(author_email) }}"
 
 github_username:
   type: str
   help: What is YOUR GitHub username?
   placeholder: "username"
-  default: "username"
   validator: "{% from pathjoin('includes', 'validators.jinja') import validate_github_username %}{{ validate_github_username(github_username) }}"
 
-repo_in_bhklab:
+repo_location:
   type: str
-  help: Is this project going to be hosted in the 'bhklab' GitHub organization? or in your personal account?
+  help: Is this project going to be hosted in the 'bhklab', 'BHKLAB-DataProcessing' or your {{ github_username }} GitHub organization?
   default: "bhklab"
   choices:
     - bhklab
-    - personal
+    - BHKLAB-DataProcessing
+    - "{{ github_username }}"
 
 project_name:
   type: str # Any value will be treated raw as a string
@@ -41,15 +39,14 @@ project_name:
 project_slug:
   type: str
   help:
-    Project slug for use in URLs, filenames, Github repo
+    MUST BE UNIQUE Project slug for use in URLs, filenames, Github repo
     (should be lowercase and contain only letters, numbers, underscores, and hyphens).
-    MUST BE UNIQUE in the bhklab GitHub organization.
   default: "{% from pathjoin('includes', 'slugify.jinja') import slugify%}{{ slugify(project_name) }}"
   validator: "{% from pathjoin('includes', 'validators.jinja') import validate_slug %}{{ validate_slug(project_slug) }}"
 
 project_description:
   type: str
-  help: A short description of your project.
+  help: "A short description of your {{ project_name }} project."
   default: "TODO:: Add a short description of {{ package_name }} here."
 
 python_version:

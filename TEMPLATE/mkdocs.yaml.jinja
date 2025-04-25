@@ -1,9 +1,5 @@
 site_name: {{ project_name }}
-{% if repo_in_bhklab == "bhklab" %}
-repo_url: https://github.com/bhklab/{{ project_slug }}
-{% else %}
-repo_url: https://github.com/{{ github_username }}/{{ project_slug }}
-{% endif %}
+repo_url: https://github.com/{{ repo_location }}/{{ project_slug }}
 repo_name: {{ project_slug }}
 site_description: Package documentation for {{ project_name }}
 site_author: {{ author_full_name }}
@@ -35,8 +31,4 @@ plugins:
     - include-markdown                  # allows for including Markdown files into another Markdown file
 
 extra:
-    {% if repo_in_bhklab == "bhklab" %}
-    homepage: https://bhklab.github.io/{{ project_slug }}
-    {% else %}
-    homepage: https://{{ github_username }}.github.io/{{ project_slug }}
-    {% endif %}
+    homepage: https://{{ repo_location }}.github.io/{{ project_slug }}
