@@ -23,9 +23,7 @@ Copier facilitates the management of project templates by
 using [jinja2](https://jinja.palletsprojects.com/) templating for file/directory
 names and content in the template.
 
->[!NOTE]
-> FYI: I have tried to enable ALL of the BELOW features automatically, but leaving
-> them here for now in case there are issues with the automatic setup.
+## FYI: I have tried to enable ALL of the BELOW features automatically, but leaving them here for now in case there are issues with the automatic setup
 
 ## Setting up GitHub Actions
 
