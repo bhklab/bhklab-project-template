@@ -6,16 +6,11 @@
 
 Visit the [pixi documentation](https://pixi.sh)
 
-**Step 2: Fill in the `PROJECT_NAME` variable.**
-
-```bash
-export PROJECT_NAME="my-awesome-project"
-```
-
-**Step 3: Run the following `pixi` command to copy the template.**
+**Step 2: Run the following command to create a new project.**
+**Replace `${PROJECT_NAME}` with the name of your project.**
 
 ```console
-pixi exec --spec copier -- copier copy --trust --vcs-ref HEAD https://github.com/bhklab/bhklab-project-template ${PROJECT_NAME}
+pixi exec --spec copier -- copier copy --trust --vcs-ref HEAD https://github.com/bhklab/bhklab-project-template <PROJECT_NAME>
 ```
 
 ## How this works
