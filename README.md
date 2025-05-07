@@ -23,7 +23,7 @@ Visit the [pixi documentation](https://pixi.sh)
 > but you can just install it globally and not prefix it with `pixi exec`.
 
 ```console
-gh auth login --hostname 'github.com' --git-protocol ssh
+pixi exec gh auth login --hostname 'github.com' --git-protocol ssh
 ```
 
 Follow the instructions to authenticate with your GitHub account.
