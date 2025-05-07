@@ -23,6 +23,17 @@ Copier facilitates the management of project templates by
 using [jinja2](https://jinja.palletsprojects.com/) templating for file/directory
 names and content in the template.
 
+## Setting up GitHub Actions
+
+**Step 1: Go to `settings` > `Actions` > `General` in your GitHub repository.**
+![actions-general](./assets/actions-general-settings.png)
+
+**Step 2: Select `Allow all actions and reusable workflows` in the `Workflow permissions` section + CLICK `Save`**
+![actions-permissions](./assets/actions-permissions-settings.png)
+
+**Step 3: Scroll down to the `Workflow permissions` section and select `Read and write permissions AND Allow GitHub Actions to create and approve pull requests`**
+![actions-permissions](./assets/actions-permissions-settings-2.png)
+
 ## Issues
 
 Please report any issues with the template to the
