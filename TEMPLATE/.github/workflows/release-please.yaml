@@ -1,0 +1,47 @@
+name: Release-Please
+
+on:
+    push:
+        branches:
+            - main
+
+permissions:
+    contents: write
+    pull-requests: write
+
+jobs:
+    release-please:
+        runs-on: ubuntu-latest
+
+        concurrency:
+            group: ${{ github.workflow }}-${{ github.ref }}
+
+        steps:
+            - uses: GoogleCloudPlatform/release-please-action@v4
+              id: release
+              with:
+                  release-type: simple
+
+            - uses: actions/checkout@v4.2.0
+              if: ${{ steps.release.outputs.release_created }}
+              with:
+                  fetch-depth: 0
+
+            - name: Install Pixi
+              if: ${{ steps.release.outputs.release_created }}
+              uses: prefix-dev/setup-pixi@v0.8.1
+              with:
+                  pixi-version: v0.46.0
+
+            - name: Configure Git user
+              if: ${{ steps.release.outputs.release_created }}
+              run: |
+                  git config --local user.email "github-actions[bot]@users.noreply.github.com"
+                  git config --local user.name "github-actions[bot]"
+
+            - name: Deploy Documentation Using Mike and Released Version
+              if: ${{ steps.release.outputs.release_created }}
+              run: |
+                  VERSION=$(echo ${{ steps.release.outputs.tag_name }} | sed 's/v//')
+                  echo "Deploying version $VERSION"
+                  pixi run --environment docs mkdocs gh-deploy
