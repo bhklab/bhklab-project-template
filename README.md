@@ -1,18 +1,5 @@
 # Project Template for BHKLab Projects
 
-## Usage
-
-**Step 1: Make sure you have the `pixi` tool installed.**
-
-Visit the [pixi documentation](https://pixi.sh)
-
-**Step 2: Run the following command to create a new project.**
-**Replace `${PROJECT_NAME}` with the name of your project.**
-
-```console
-pixi exec --spec copier -- copier copy --trust --vcs-ref HEAD https://github.com/bhklab/bhklab-project-template <PROJECT_NAME>
-```
-
 ## How this works
 
 This project uses the [copier tool](https://copier.readthedocs.io) to maintain
@@ -22,6 +9,36 @@ repositories.
 Copier facilitates the management of project templates by
 using [jinja2](https://jinja.palletsprojects.com/) templating for file/directory
 names and content in the template.
+
+## Requirements
+
+**1: Make sure you have the `pixi` tool installed.**
+
+Visit the [pixi documentation](https://pixi.sh)
+
+**2: Make sure you have the `gh` github cli tool installed and logged in**
+
+> [!NOTE]
+> I recommend using `pixi exec gh` which can use the tool without installing it
+> but you can just install it globally and not prefix it with `pixi exec`.
+
+```console
+gh auth login --hostname 'github.com' --git-protocol ssh
+```
+
+Follow the instructions to authenticate with your GitHub account.
+
+> [!WARNING]
+> Make sure you have been added to our lab organization(s) before proceeding!
+
+## Usage
+
+**Run the following command to create a new project.**
+**Replace `${PROJECT_NAME}` with the name of your project.**
+
+```console
+pixi exec --spec copier -- copier copy --trust --vcs-ref HEAD https://github.com/bhklab/bhklab-project-template <PROJECT_NAME>
+```
 
 ## FYI: I have tried to enable ALL of the BELOW features automatically, but leaving them here for now in case there are issues with the automatic setup
 
