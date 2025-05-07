@@ -1,3 +1,34 @@
-```console
-pixi exec --spec copier -- copier copy --trust --vcs-ref HEAD https://github.com/jjjermiah/bhklab_test_template my_test_github_project
+# Project Template for BHKLab Projects
+
+## Usage
+
+**Step 1: Make sure you have the `pixi` tool installed.**
+
+Visit the [pixi documentation](https://pixi.sh)
+
+**Step 2: Fill in the `PROJECT_NAME` variable.**
+
+```bash
+export PROJECT_NAME="my-awesome-project"
 ```
+
+**Step 3: Run the following `pixi` command to copy the template.**
+
+```console
+pixi exec --spec copier -- copier copy --trust --vcs-ref HEAD https://github.com/bhklab/bhklab-project-template ${PROJECT_NAME}
+```
+
+## How this works
+
+This project uses the [copier tool](https://copier.readthedocs.io) to maintain
+a standardized project template that follows the general structure of BHKLab
+repositories.
+
+Copier facilitates the management of project templates by
+using [jinja2](https://jinja.palletsprojects.com/) templating for file/directory
+names and content in the template.
+
+## Issues
+
+Please report any issues with the template to the
+[bhklab/bhklab-project-template](https://github.com/bhklab/bhklab-project-template).

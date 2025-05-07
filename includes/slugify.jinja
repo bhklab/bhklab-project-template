@@ -1,6 +1,6 @@
 {# For simplicity ... -#}
 {% macro slugify(value) -%}
-{{ value|lower|replace(' ', '-') }}
+    {{ value|lower|replace(' ', '-') }}
 {%- endmacro %}
 
 {# creates bhklab._slug_name_@gmail.com -#}

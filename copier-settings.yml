@@ -1,43 +1,43 @@
 _answers_file: .bhklab-template-builder-answers.yml
 
 _exclude:
-  - includes
+    - includes
 
 _templates_suffix: .jinja
 
 _subdirectory: TEMPLATE
 
 _message_before_copy: |
-  Thanks for generating a project using our template.
+    Thanks for generating a project using our template.
 
-  You'll be asked a series of questions whose answers will be used to
-  generate a tailored project for you.
+    You'll be asked a series of questions whose answers will be used to
+    generate a tailored project for you.
 
 _tasks:
-  # {{ pixi_install_envs }} is a list of strings
-  - echo "Initializing a git repository..."
-  - git init
-  - pixi install --all
-  - mkdir -p {config,metadata,resources,logs,sandbox}
-  - mkdir -p workflow/{notebooks,scripts}
-  - mkdir -p data/{rawdata,procdata,results}
-  - >-
-    {% if is_snakemake %}
-    mkdir -p workflow/{rules,envs,config,profiles,reports} && touch workflow/Snakefile
-    {% endif %}
-  - git add .
-  - git commit -m "first commit"
+    - echo "Initializing a git repository..."
+    - git init --initial-branch=main
 
+    - echo "Initializing pixi project..."
+    - pixi lock
+
+    - echo "Creating project structure..."
+    - mkdir -p config metadata resources logs sandbox
+    - mkdir -p data/procdata data/rawdata data/results
+    - mkdir -p workflow/notebooks workflow/scripts
+
+    - echo "Initializing git repository..."
+    - git add .
+    - git commit -m "first commit"
 
 _message_after_copy: |
-  Your project "{{ project_name }}" has been created successfully!
+    Your project "{{ project_name }}" has been created successfully!
 
-  Next steps:
+    Next steps:
 
-  1. Change directory to the project root:
+    1. Change directory to the project root:
 
-     $ cd {{ _copier_conf.dst_path }}
+        $ cd {{ _copier_conf.dst_path }}
 
-  2. Enter the `dev` environment:
+    2. Enter the `dev` environment:
 
-     $ pixi shell -e dev
+        $ pixi shell -e dev
