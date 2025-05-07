@@ -23,6 +23,10 @@ Copier facilitates the management of project templates by
 using [jinja2](https://jinja.palletsprojects.com/) templating for file/directory
 names and content in the template.
 
+>[!NOTE]
+> FYI: I have tried to enable ALL of the BELOW features automatically, but leaving
+> them here for now in case there are issues with the automatic setup.
+
 ## Setting up GitHub Actions
 
 **Step 1: Go to `settings` > `Actions` > `General` in your GitHub repository.**
@@ -43,16 +47,10 @@ names and content in the template.
 > However, you need to create a `gh-pages` branch in your repository.
 > You can do this by running the following command:
     ```console
-    git checkout --orphan gh-pages
-    git rm -rf .
-    git commit --allow-empty -m "Initial commit"
+    git branch gh-pages
     git push origin gh-pages
     ```
-> This will create an empty `gh-pages` branch in your repository.
-> You can also create the `gh-pages` branch using the GitHub UI.
-> To do this, go to the `branches` tab in your repository and click on the `New branch` button.
-> Enter `gh-pages` as the branch name and select `main` as the base branch.
-> Click on the `Create branch` button to create the `gh-pages` branch.
+> This is only possible after you have created the repository on GitHub.
 
 The template will use mkdocs to build the documentation and deploy it to GitHub Pages.
 To set up GitHub Pages, follow these steps:

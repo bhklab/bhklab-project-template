@@ -26,8 +26,12 @@ _tasks:
     - mkdir -p workflow/notebooks workflow/scripts
 
     - echo "Initializing git repository..."
-    - git add .
-    - git commit -m "first commit"
+    - command: ["git", "add", "."]
+    - command: ["git", "commit", "-m", "feat: first commit"]
+
+    - pixi exec gh repo create --public --source=. --remote=origin --push {{ repo_location }}/{{ project_slug }}
+    
+    - pixi exec gh repo edit --homepage="https://{{ repo_location }}.github.io/{{ project_slug }}" --description="{{ project_description }}"
 
 _message_after_copy: |
     Your project "{{ project_name }}" has been created successfully!
