@@ -28,10 +28,17 @@ _tasks:
     - echo "Initializing git repository..."
     - command: ["git", "add", "."]
     - command: ["git", "commit", "-m", "feat: first commit"]
-
     - pixi exec gh repo create --public --source=. --remote=origin --push {{ repo_location }}/{{ project_slug }}
-    
+
     - pixi exec gh repo edit --homepage="https://{{ repo_location }}.github.io/{{ project_slug }}" --description="{{ project_description }}"
+
+    # we need to create the gh-pages branch to host the static site
+    # this command will create it and push it to the remote
+    - command: ["git", "branch", "gh-pages"]
+    - command: ["git", "push", "-u", "origin", "gh-pages"]
+
+    # turns out this is not needed, the gh-pages is setup automatically after creating the branch
+    # - pixi exec gh api --method POST repos/{{ repo_location }}/{{ project_slug }}/pages -f "source[branch]=gh-pages" -f "source[path]=/"
 
 _message_after_copy: |
     Your project "{{ project_name }}" has been created successfully!
