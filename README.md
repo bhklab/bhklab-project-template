@@ -34,6 +34,37 @@ names and content in the template.
 **Step 3: Scroll down to the `Workflow permissions` section and select `Read and write permissions AND Allow GitHub Actions to create and approve pull requests`**
 ![actions-permissions](./assets/actions-permissions-settings-2.png)
 
+## Setting up GitHub Pages
+
+>[!NOTE]
+> Before being able to deploy the documentation, you need to set up GitHub Pages.
+> This is a one-time setup for the repository. The documentation will be deployed
+> automatically to GitHub Pages when you push to the `main` branch.
+> However, you need to create a `gh-pages` branch in your repository.
+> You can do this by running the following command:
+    ```console
+    git checkout --orphan gh-pages
+    git rm -rf .
+    git commit --allow-empty -m "Initial commit"
+    git push origin gh-pages
+    ```
+> This will create an empty `gh-pages` branch in your repository.
+> You can also create the `gh-pages` branch using the GitHub UI.
+> To do this, go to the `branches` tab in your repository and click on the `New branch` button.
+> Enter `gh-pages` as the branch name and select `main` as the base branch.
+> Click on the `Create branch` button to create the `gh-pages` branch.
+
+The template will use mkdocs to build the documentation and deploy it to GitHub Pages.
+To set up GitHub Pages, follow these steps:
+**Step 1: Go to `settings` > `Pages` in your GitHub repository.**
+
+**Step 2: Select `Deploy from a branch` in the `Source` section.**
+
+**Step 3: Select `gh-pages` branch and `/ (root)` folder in the `Branch` section.**
+
+**Step 4: Click `Save`.**
+![gh-pages](./assets/gh-pages-settings.png)
+
 ## Issues
 
 Please report any issues with the template to the
