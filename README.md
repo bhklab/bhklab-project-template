@@ -16,14 +16,24 @@ names and content in the template.
 
 Visit the [pixi documentation](https://pixi.sh)
 
-**2: Make sure you have the `gh` github cli tool installed and logged in**
-
-> [!NOTE]
-> I recommend using `pixi exec gh` which can use the tool without installing it
-> but you can just install it globally and not prefix it with `pixi exec`.
+The following two commands should work:
 
 ```console
-pixi exec gh auth login --hostname 'github.com' --git-protocol ssh
+pixi exec gh --help
+```
+
+```console
+pixi exec copier --help
+```
+
+**2: Make sure you have the `gh` github cli tool installed and logged in**
+
+```console
+pixi exec gh --version
+```
+
+```console
+pixi exec gh auth login --hostname 'github.com' --git-protocol https
 ```
 
 Follow the instructions to authenticate with your GitHub account.
@@ -37,10 +47,18 @@ Follow the instructions to authenticate with your GitHub account.
 **Replace `${PROJECT_NAME}` with the name of your project.**
 
 ```console
-pixi exec --spec copier -- copier copy --trust --vcs-ref HEAD https://github.com/bhklab/bhklab-project-template <PROJECT_NAME>
+pixi exec copier copy --trust --vcs-ref HEAD https://github.com/bhklab/bhklab-project-template <PROJECT_NAME>
 ```
 
-## FYI: I have tried to enable ALL of the BELOW features automatically, but leaving them here for now in case there are issues with the automatic setup
+## Troubleshooting
+
+I have tried to simplify this setup as much as possible including the setup
+of the remote GitHub repository and the GitHub Actions workflow, and deploying
+the documentation to GitHub Pages.
+However in case you run into issues, here are some troubleshooting steps.
+
+<details>
+<summary>extra setup steps if needed</summary>
 
 ## Setting up GitHub Actions
 
@@ -77,6 +95,8 @@ To set up GitHub Pages, follow these steps:
 
 **Step 4: Click `Save`.**
 ![gh-pages](./assets/gh-pages-settings.png)
+
+</details>
 
 ## Issues
 
