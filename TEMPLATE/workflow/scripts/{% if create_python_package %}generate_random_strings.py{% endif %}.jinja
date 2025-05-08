@@ -1,0 +1,50 @@
+"""
+This is a python script that loads in the package module's random string function
+"""
+
+import logging
+
+import click
+
+from {{ package_name.replace('-', '_') }} import generate_random_string, is_even_number, logger
+
+
+@click.command(no_args_is_help=True)
+@click.option('--count', help='Number of strings to generate', type=int)
+@click.option('--length', default=5, help='Length of each string', type=int)
+@click.option('--debug', is_flag=True, help='Enable debug mode')
+def random_strings(count: int, length: int = 5, debug: bool = False) -> list[str]:
+    """Create a list of random strings.
+
+    This function calls both is_even_number and generate_random_string.
+
+    if the index is even, it generates a string of the specified length.
+
+    if the index is odd, it generates a string of half the specified length.
+
+    """
+    # Set up logging
+    if debug:
+        logger.setLevel(logging.DEBUG)
+        click.echo('Debug mode enabled')
+        logger.debug(f'Creating {count} random strings of length {length}')
+
+    result = []
+    for i in range(count):
+        # Use is_even_number to determine string generation
+        if is_even_number(i):
+            # For even positions, use the specified length
+            result.append(generate_random_string(length))
+        else:
+            # For odd positions, use half the length
+            result.append(generate_random_string(length // 2 or 1))
+
+    click.echo('Generated strings:')
+    for i, s in enumerate(result):
+        click.echo(f'\tIndex {i}: {s}')
+
+    return result
+
+
+if __name__ == '__main__':
+    random_strings()

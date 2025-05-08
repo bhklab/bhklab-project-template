@@ -17,6 +17,15 @@ ipython = "*"
 ipykernel = "*"
 jupyterlab = "*"
 pip = "*"
+
+{% if create_python_package %}
+[pypi-dependencies]
+{{ package_name }} = { path = ".", editable = true }
+
+[tasks]
+mainscript.cmd = "python workflow/scripts/generate_random_strings.py"
+{% endif %}
+
 ############################################## QUALITY ###############################################
 # Quality includes linting, type checking, and formatting
 [feature.quality.dependencies]
