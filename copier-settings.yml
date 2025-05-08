@@ -48,6 +48,6 @@ _message_after_copy: |
 
         $ cd {{ _copier_conf.dst_path }}
 
-    2. Enter the `dev` environment:
+    2. Enter the `default` environment:
 
-        $ pixi shell -e dev
+        $ pixi shell
