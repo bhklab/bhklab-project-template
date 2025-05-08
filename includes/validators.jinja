@@ -20,6 +20,13 @@
   {%- endif %}
 {%- endmacro %}
 
+{# Jinja macro to validate package name -#}
+{% macro validate_package_name(package_name) -%}
+  {%- if not package_name | regex_search('^[a-z0-9_]+$') %}
+    {{ package_name }} is not a valid package name.
+  {%- endif %}
+{%- endmacro %}
+
 {# Jinja macro to validate package slug -#}
 {% macro validate_slug(package_slug) -%}
   {%- if not package_slug | regex_search('^[a-z0-9_\-]+$') %}

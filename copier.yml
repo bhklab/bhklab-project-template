@@ -57,3 +57,14 @@ python_version:
         - "3.11"
         - "3.12"
         - "3.13"
+
+create_python_package:
+    type: bool
+    help: Setup python package for reusable src code in scripts?
+    default: false
+
+package_name:
+    type: str
+    when: "{{ create_python_package == true}}"
+    help: Name of the python package, used for src code in scripts.
+    default: "{{ project_slug }}"
