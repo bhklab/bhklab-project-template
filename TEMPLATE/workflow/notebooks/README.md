@@ -26,7 +26,7 @@ Unlike data directories, **notebooks ARE tracked in Git** and should be:
 - Well-documented with clear purposes
 - Cleaned of large outputs before committing (consider tools like [nbstripout](https://github.com/kynan/nbstripout))
 - Named descriptively (e.g., `01_data_exploration.ipynb`, `02_feature_selection.ipynb`)
-
+WARNING: if the data you are working with cannot be publicly shared (e.g. internal datasets), make sure no results are pushed to Git in your notebooks!
 ## Organization Recommendations
 
 Organize notebooks in a logical sequence that follows your analysis workflow:
