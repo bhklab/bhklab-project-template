@@ -39,6 +39,7 @@ jobs:
                       - `perf`: A code change that improves performance
                       - `build`: Changes that affect the build system or external dependencies (example: Adding a dependency to Pixi)
                       - `ci`: Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs)
+                      - `refactor`: A code change that neither fixes a bug nor adds a feature, but improves the structure of the code
                       - `chore`: Other changes that don't modify src or test files
 
                       Please Edit the PR Title to prepend the prefix to your PR:
