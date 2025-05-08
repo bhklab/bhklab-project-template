@@ -14,6 +14,7 @@ _message_before_copy: |
     generate a tailored project for you.
 
 _tasks:
+    # TODO:: clean this up before publishing the template for usage
     - echo "Initializing a git repository..."
     - git init --initial-branch=main
 
@@ -22,8 +23,6 @@ _tasks:
 
     - echo "Creating project structure..."
     - mkdir -p config metadata resources logs sandbox
-    - mkdir -p data/procdata data/rawdata data/results
-    - mkdir -p workflow/notebooks workflow/scripts
 
     - echo "Initializing git repository..."
     - command: ["git", "add", "."]

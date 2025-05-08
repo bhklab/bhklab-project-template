@@ -10,6 +10,79 @@ Copier facilitates the management of project templates by
 using [jinja2](https://jinja.palletsprojects.com/) templating for file/directory
 names and content in the template.
 
+## Project Status and Roadmap
+
+> [!NOTE]
+> This section tracks the development progress of the BHKLab project template.
+
+### Project Overview
+
+The BHKLab project template aims to provide:
+
+- Simple project setup with pixi, mkdocs, and basic DMP folder structure
+- Support for reproducible research with proper documentation
+- GitHub integrations and standardized workflow
+
+### Implementation Status
+
+- [x] Basic template structure with copier
+- [x] Pixi integration with conda-forge/bioconda channels and platforms (linux-64, osx-arm64, win-64, osx-64)
+- [x] DMP structure with proper README files
+  - [x] workflow/notebooks
+  - [x] workflow/scripts
+  - [x] data/rawdata (gitignored with README)
+  - [x] data/procdata (gitignored with README)
+  - [x] data/results (gitignored with README)
+- [x] MkDocs setup with basic pages structure
+  - [x] Home page (links to README)
+  - [x] Usage page (how to run code)
+  - [x] Data Sources page (documentation for rawdata)
+  - [x] Developer Notes page (working notes/journal)
+- [x] GitHub repository creation automation with gh CLI
+- [x] GitHub Pages setup with automatic deployment
+- [x] GitHub Actions workflow for releases
+- [ ] Example walkthrough of creating a project with the template
+- [ ] Add pre-commit hooks for basic quality checks
+- [ ] GitHub Actions to audit DMP structure (check for accidental commits in data directories)
+- [x] Conventional PR title enforcement in GitHub Actions
+- [ ] Add section for future links to manuscript/publication in README template
+- [ ] Create additional environment for snakemake workflows if needed
+- [ ] Add optional R project template support
+- [ ] Create testing framework for the template itself
+
+### Latest Meeting Notes (Apr 25, 2025)
+
+<details>
+<summary>Meeting Agenda and Action Items</summary>
+
+**Template Ideas:**
+
+- Simple/Project structure with pixi, mkdocs, basic DMP folder setup
+- Package development templates for R and Python with project toml, ruff, CodeRabbit, Code coverage
+
+**MkDocs Components:**
+
+- Home
+- How to run code
+- Where to get data
+- Working notes
+- Documenting symbolic links
+
+**GitHub Actions:**
+
+- Check for presence of rawdata, procdata, results directories
+- Documentation audits
+- Optional CodeRabbit integration
+
+**Action Items:**
+
+- Complete initial template structure ✓
+- Document DMP best practices ✓
+- Setup GitHub Actions workflows 🚧
+- Test with real projects 🚧
+
+</details>
+
 ## Requirements
 
 **1: Make sure you have the `pixi` tool installed.**
@@ -102,3 +175,7 @@ To set up GitHub Pages, follow these steps:
 
 Please report any issues with the template to the
 [bhklab/bhklab-project-template](https://github.com/bhklab/bhklab-project-template).
+
+## Contributors
+
+- Jermiah Joseph (@jjjermiah)
