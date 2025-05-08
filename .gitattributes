@@ -1,2 +1,6 @@
 # SCM syntax highlighting & preventing 3-way merges
 pixi.lock merge=binary linguist-language=YAML linguist-generated=true
+*.py.jinja linguist-language=Python
+*.toml.jinja linguist-language=TOML
+*.md.jinja linguist-language=Markdown
+*.yaml.jinja linguist-language=YAML
