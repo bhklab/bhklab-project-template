@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/bhklab/bhklab-project-template/compare/v0.2.0...v0.3.0) (2025-05-09)
+
+
+### Features
+
+* add release command for initial alpha version in project setup ([6988526](https://github.com/bhklab/bhklab-project-template/commit/6988526be15970a69d0d19612b9796963f5d3164))
+
 ## [0.2.0](https://github.com/bhklab/bhklab-project-template/compare/v0.1.0...v0.2.0) (2025-05-09)
 
 
