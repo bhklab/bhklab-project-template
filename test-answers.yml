@@ -1,0 +1,9 @@
+# Test answers file for CI/CD pipelines
+author_full_name: CI Test User
+author_email: test@example.com
+github_username: test-user
+repo_location: test-user
+project_name: Test Project
+project_slug: test-project
+project_description: A test project created for CI
+python_version: '3.12'

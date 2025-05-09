@@ -1,0 +1,59 @@
+name: Copier Cross-Platform Compatibility
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron: '0 0 * * 0'  # Run weekly on Sunday at midnight UTC
+  workflow_dispatch:  # Allows manual triggering from the GitHub UI
+
+jobs:
+  test-compatibility:
+    name: Test Copier on Python ${{ matrix.python-version }} / ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        python-version: ['3.10', '3.11', '3.12']
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+      
+      - name: Install Copier directly with pip
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install copier jinja2
+      
+      - name: Test Copier without Pixi
+        shell: bash
+        run: |
+          # Create a temporary directory for the test project
+          TEST_DIR="$(mktemp -d)/test-project"
+          mkdir -p "$TEST_DIR"
+          echo "Test directory: $TEST_DIR"
+          
+          # Run copier directly to test compatibility
+          copier copy --vcs-ref=HEAD --trust --force --answers-file=test-answers.yml . "$TEST_DIR"
+          echo "Copier completed successfully"
+          
+          # Basic validation of key files
+          if [ ! -f "$TEST_DIR/README.md" ]; then
+            echo "ERROR: README.md not found"
+            exit 1
+          fi
+          
+          if [ ! -f "$TEST_DIR/pixi.toml" ]; then
+            echo "ERROR: pixi.toml not found"
+            exit 1
+          fi
+          
+          echo "Completed compatibility test with Python ${{ matrix.python-version }} on ${{ matrix.os }}"

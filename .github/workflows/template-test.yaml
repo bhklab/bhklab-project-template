@@ -1,0 +1,127 @@
+name: Test Template Build
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  test-template:
+    name: Test Template on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Need full history to work with copier
+
+      - name: Setup Pixi
+        uses: prefix-dev/setup-pixi@v0.4.1
+        with:
+          pixi-version: "latest"
+
+      - name: Install Dependencies
+        run: |
+          pixi install
+
+      - name: Create Temp Dir (Unix)
+        if: runner.os != 'Windows'
+        id: tempdir-unix
+        shell: bash
+        run: |
+          TEST_DIR=$(mktemp -d)
+          echo "TEST_DIR=$TEST_DIR" >> $GITHUB_OUTPUT
+      
+      - name: Create Temp Dir (Windows)
+        if: runner.os == 'Windows'
+        id: tempdir-windows
+        shell: pwsh
+        run: |
+          $TEST_DIR = Join-Path $env:TEMP "bhklab-test-$(Get-Random)"
+          New-Item -ItemType Directory -Path $TEST_DIR | Out-Null
+          echo "TEST_DIR=$TEST_DIR" >> $env:GITHUB_OUTPUT
+      
+      - name: Test Template with Copier (Non-interactive)
+        shell: bash
+        run: |
+          # Set TEST_DIR based on the OS
+          if [ "$RUNNER_OS" == "Windows" ]; then
+            TEST_DIR="${{ steps.tempdir-windows.outputs.TEST_DIR }}"
+          else
+            TEST_DIR="${{ steps.tempdir-unix.outputs.TEST_DIR }}"
+          fi
+          
+          # Run copier to create a test project
+          pixi run copier copy \
+            --trust \
+            --vcs-ref=HEAD \
+            --answers-file=test-answers.yml \
+            --defaults \
+            --data='author_full_name=CI Test User' \
+            --data='author_email=test@example.com' \
+            --data='github_username=test-user' \
+            --data='repo_location=test-user' \
+            --data='project_name=Test Project' \
+            --data='project_slug=test-project' \
+            --data='project_description=A test project for CI' \
+            --data='python_version=3.12' \
+            "$PWD" "$TEST_DIR"
+          
+          # Check that key files exist
+          echo "Validating generated project structure..."
+          
+          # List of files that should exist in the generated project
+          FILES_TO_CHECK=(
+            "pixi.toml"
+            "mkdocs.yaml"
+            "README.md"
+            "data/rawdata/README.md"
+            "data/procdata/README.md"
+            "data/results/README.md"
+            "workflow/scripts/README.md"
+            "workflow/notebooks/README.md"
+            "docs/index.md"
+          )
+          
+          # Check each file
+          for file in "${FILES_TO_CHECK[@]}"; do
+            if [ ! -f "$TEST_DIR/$file" ]; then
+              echo "Error: Expected file $file is missing"
+              exit 1
+            else
+              echo "✓ Found $file"
+            fi
+          done
+          
+          # Check directories
+          DIRS_TO_CHECK=(
+            "config"
+            "metadata" 
+            "resources"
+            "logs"
+            "sandbox"
+            ".github/workflows"
+          )
+          
+          for dir in "${DIRS_TO_CHECK[@]}"; do
+            if [ ! -d "$TEST_DIR/$dir" ]; then
+              echo "Error: Expected directory $dir is missing"
+              exit 1
+            else
+              echo "✓ Found directory $dir"
+            fi
+          done
+          
+          # Verify pixi.toml can be parsed
+          cd $TEST_DIR
+          echo "Validating pixi.toml..."
+          pixi info
+          
+          echo "All template tests passed!"

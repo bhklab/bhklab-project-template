@@ -1,5 +1,8 @@
 # Project Template for BHKLab Projects
 
+[![Test Copier Template](https://github.com/bhklab/bhklab-project-template/actions/workflows/test-template.yml/badge.svg)](https://github.com/bhklab/bhklab-project-template/actions/workflows/test-template.yml)
+[![Validate Copier Template](https://github.com/bhklab/bhklab-project-template/actions/workflows/validate-template.yml/badge.svg)](https://github.com/bhklab/bhklab-project-template/actions/workflows/validate-template.yml)
+
 ## How this works
 
 This project uses the [copier tool](https://copier.readthedocs.io) to maintain
@@ -9,6 +12,29 @@ repositories.
 Copier facilitates the management of project templates by
 using [jinja2](https://jinja.palletsprojects.com/) templating for file/directory
 names and content in the template.
+
+## Template Testing
+
+This template includes GitHub Actions that automatically test and validate the template:
+
+### Test Copier Template Workflow
+This action tests the template on multiple operating systems (Ubuntu, macOS, and Windows) to ensure it can be built with copier. The action performs the following steps:
+
+1. Checks out the template repository
+2. Sets up pixi
+3. Installs dependencies
+4. Creates a test project using copier (non-interactive mode)
+5. Validates the generated project structure and files
+6. Tests the pixi environment in the generated project
+
+### Validate Copier Template Workflow
+This action validates the template structure and syntax:
+
+1. Checks for required files and directories
+2. Validates YAML syntax in configuration files
+3. Checks Jinja template syntax for errors
+
+You can view the status of these tests in the GitHub Actions tab or run them manually using the workflow_dispatch event.
 
 ## Project Status and Roadmap
 

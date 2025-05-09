@@ -1,0 +1,114 @@
+name: Validate Copier Template
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:  # Allows manual triggering from the GitHub UI
+
+jobs:
+  validate-template:
+    name: Validate Template Structure
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Pixi
+        uses: prefix-dev/setup-pixi@v0.4.1
+        with:
+          pixi-version: "latest"
+      
+      - name: Install dependencies
+        run: |
+          pixi install
+          pixi add copier pyyaml
+
+      - name: Validate Copier YAML files
+        shell: bash
+        run: |
+          # Check YAML syntax
+          pixi run python - <<EOF
+          import yaml
+          import sys
+          import os
+
+          yaml_files = [
+              'copier.yml',
+              'copier-settings.yml',
+              'test-answers.yml',
+          ]
+
+          success = True
+          for file in yaml_files:
+              try:
+                  print(f"Validating {file}...")
+                  with open(file, 'r') as f:
+                      yaml.safe_load(f)
+                  print(f"✅ {file} is valid YAML")
+              except yaml.YAMLError as e:
+                  print(f"❌ Error in {file}: {e}")
+                  success = False
+              except FileNotFoundError:
+                  print(f"❌ File not found: {file}")
+                  success = False
+
+          if not success:
+              sys.exit(1)
+          EOF
+
+      - name: Validate Template Structure
+        shell: bash
+        run: |
+          # Check for required directories
+          test -d "TEMPLATE" || (echo "TEMPLATE directory not found" && exit 1)
+          test -d "includes" || (echo "includes directory not found" && exit 1)
+          
+          # Check for required files
+          test -f "copier.yml" || (echo "copier.yml not found" && exit 1)
+          test -f "copier-settings.yml" || (echo "copier-settings.yml not found" && exit 1)
+          test -f "README.md" || (echo "README.md not found" && exit 1)
+          test -f "test-answers.yml" || (echo "test-answers.yml not found" && exit 1)
+          
+          # Validate Jinja templates by checking for syntax errors
+          pixi run python - <<EOF
+          import sys
+          import os
+          from pathlib import Path
+          import jinja2
+
+          # Create a Jinja environment with strict undefined handling to catch errors
+          env = jinja2.Environment(undefined=jinja2.StrictUndefined)
+
+          # Find all Jinja template files
+          template_files = []
+          for root, dirs, files in os.walk('.'):
+              if '.git' in dirs:
+                  dirs.remove('.git')
+              for file in files:
+                  if file.endswith('.jinja'):
+                      template_files.append(os.path.join(root, file))
+
+          success = True
+          for template_file in template_files:
+              try:
+                  print(f"Validating template syntax: {template_file}")
+                  with open(template_file, 'r') as f:
+                      template_content = f.read()
+                  # Parse the template to check for syntax errors
+                  env.parse(template_content)
+                  print(f"✅ {template_file} has valid syntax")
+              except jinja2.exceptions.TemplateSyntaxError as e:
+                  print(f"❌ Syntax error in {template_file}: {e}")
+                  success = False
+              except Exception as e:
+                  print(f"❌ Error reading or parsing {template_file}: {e}")
+                  success = False
+
+          if not success:
+              sys.exit(1)
+          EOF
+          
+          echo "Template validation completed successfully"

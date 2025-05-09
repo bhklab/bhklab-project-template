@@ -1,0 +1,80 @@
+name: Test Copier Template
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:  # Allows manual triggering from the GitHub UI
+
+jobs:
+  test-template:
+    name: Test Template on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Pixi
+        uses: prefix-dev/setup-pixi@v0.4.1
+        with:
+          pixi-version: "latest"
+      
+      - name: Install dependencies
+        run: |
+          pixi install
+          pixi add copier gh
+      
+      - name: Test project creation
+        id: test-project
+        shell: bash
+        run: |
+          # Create a temporary directory for the test project
+          TEST_DIR="$(mktemp -d)/test-project"
+          mkdir -p "$TEST_DIR"
+          echo "Test directory: $TEST_DIR"
+          
+          # Run copier to create a project from the template
+          # Use --force to overwrite any existing files and --answers-file for non-interactive mode
+          pixi run copier copy --vcs-ref=HEAD --trust --force --answers-file=test-answers.yml . "$TEST_DIR"
+          echo "Copier completed successfully"
+          
+          # Save the test directory path for later steps
+          echo "TEST_DIR=$TEST_DIR" >> $GITHUB_ENV
+      
+      - name: Validate project structure
+        shell: bash
+        run: |
+          # List the created project files
+          echo "Project structure:"
+          find "$TEST_DIR" -type f -not -path "*/\.git/*" | sort
+          
+          # Check for key files that should exist
+          test -f "$TEST_DIR/README.md" || (echo "README.md not found" && exit 1)
+          test -f "$TEST_DIR/mkdocs.yaml" || (echo "mkdocs.yaml not found" && exit 1)
+          test -f "$TEST_DIR/pixi.toml" || (echo "pixi.toml not found" && exit 1)
+          
+          # Check for key directories
+          test -d "$TEST_DIR/data/rawdata" || (echo "data/rawdata directory not found" && exit 1)
+          test -d "$TEST_DIR/data/procdata" || (echo "data/procdata directory not found" && exit 1)
+          test -d "$TEST_DIR/data/results" || (echo "data/results directory not found" && exit 1)
+          test -d "$TEST_DIR/workflow/notebooks" || (echo "workflow/notebooks directory not found" && exit 1)
+          test -d "$TEST_DIR/workflow/scripts" || (echo "workflow/scripts directory not found" && exit 1)
+          test -d "$TEST_DIR/docs" || (echo "docs directory not found" && exit 1)
+          
+          echo "Project validation completed successfully"
+
+      - name: Test Pixi environment in generated project
+        shell: bash
+        run: |
+          cd "$TEST_DIR"
+          pixi install
+          pixi list
+          pixi info
+          
+          echo "Pixi environment test completed successfully"
