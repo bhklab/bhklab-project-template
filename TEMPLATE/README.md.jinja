@@ -1,10 +1,8 @@
 # {{ project_name }}
 
-**Author:** {{ author_full_name }}
+**Authors:** [{{ author_full_name }}](https://github.com/{{ github_username }}){% if has_additional_authors %}, {% for author in additional_authors %}{{ author }}{% if not loop.last %}, {% endif %}{% endfor %}{% endif %}
 
 **Contact:** [{{ author_email }}](mailto:{{ author_email }})
-
-**GitHub:** [{{ github_username }}](https://github.com/{{ github_username }})
 
 **Description:** {{ project_description }}
 
@@ -38,4 +36,5 @@ pixi install
 ```
 
 ## Documentation
+
 Click [here](https://{{ repo_location }}.github.io/{{ project_slug }}) to view the full documentation.

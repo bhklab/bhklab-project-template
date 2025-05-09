@@ -32,3 +32,9 @@
     {{ github_username }} is not a valid github username.
   {%- endif %}
 {%- endmacro %}
+
+{% macro validate_additional_authors(additional_authors) -%}
+    {%- if additional_authors and not additional_authors | regex_search('^[a-zA-Z0-9_ \-]+(,\s*[a-zA-Z0-9_ \-]+)*$') %}
+        Additional authors must be comma-separated names with alphanumeric characters, spaces, underscores, or hyphens.
+    {%- endif %}
+{%- endmacro %}
