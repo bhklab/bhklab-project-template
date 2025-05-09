@@ -88,6 +88,20 @@ _tasks:
     - command: ["git", "push", "-u", "origin", "gh-pages"]
       when: "{{ publish_to_github }}"
 
+    # Release 0.1.0
+    - command:
+          [
+              "pixi",
+              "exec",
+              "gh",
+              "release",
+              "create",
+              "v0.1.0",
+              "--title=Initial alpha release",
+              "--notes=Starting point for the project",
+          ]
+      when: "{{ publish_to_github }}"
+
 _message_after_copy: |
     ✅ Your project "{{ project_name }}" has been created successfully!
 
