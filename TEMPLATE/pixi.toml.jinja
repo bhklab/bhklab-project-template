@@ -28,6 +28,10 @@ ipython = "*"
 ipykernel = "*"
 jupyterlab = "*"
 pip = "*"
+
+[tasks]
+example_script = {cmd="python $SCRIPTS/example_script.py"}
+
 ############################################## QUALITY ###############################################
 # Quality includes linting, type checking, and formatting
 [feature.quality.dependencies]
