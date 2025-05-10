@@ -1,0 +1,115 @@
+name: Data Directory Audit
+
+on:
+    push:
+        branches: [main]
+    pull_request:
+        branches: [main]
+    # Allow manual triggering
+    workflow_dispatch:
+
+jobs:
+    check-data-directories:
+        name: Check for committed data files
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v3
+              with:
+                  fetch-depth: 0
+
+            - name: Check for data files in protected directories
+              id: data-check
+              run: |
+                  echo "Checking for committed data files in protected directories..."
+
+                  # Define the directories to check
+                  PROTECTED_DIRS=("data/rawdata" "data/procdata" "data/results")
+                  FOUND_FILES=0
+
+                  # Create a detailed markdown report
+                  echo "# Data Directory Audit Report" > data_audit.md
+                  echo "" >> data_audit.md
+                  echo "⚠️ Data files have been detected in protected directories that should not be committed to Git. ⚠️" >> data_audit.md
+                  echo "" >> data_audit.md
+                  echo "## Detected Files" >> data_audit.md
+                  echo "" >> data_audit.md
+
+                  for DIR in "${PROTECTED_DIRS[@]}"; do
+                    # Check if the directory exists
+                    if [ -d "$DIR" ]; then
+                      # Get a list of all files in the directory, excluding README.md and .gitignore
+                      FILE_LIST=$(find "$DIR" -type f -not -name "README.md" -not -name ".gitignore")
+                      FILE_COUNT=$(echo "$FILE_LIST" | grep -v "^$" | wc -l)
+                      
+                      if [ "$FILE_COUNT" -gt 0 ]; then
+                        echo "::warning::Found $FILE_COUNT files in $DIR directory!"
+                        echo "### $DIR" >> data_audit.md
+                        echo "" >> data_audit.md
+                        echo "Found $FILE_COUNT file(s):" >> data_audit.md
+                        echo "" >> data_audit.md
+                        echo '```' >> data_audit.md
+                        echo "$FILE_LIST" >> data_audit.md
+                        echo '```' >> data_audit.md
+                        echo "" >> data_audit.md
+                        FOUND_FILES=$((FOUND_FILES + FILE_COUNT))
+                      else
+                        echo "✅ No data files found in $DIR"
+                      fi
+                    else
+                      echo "Directory $DIR not found, skipping check."
+                    fi
+                  done
+
+                  if [ "$FOUND_FILES" -gt 0 ]; then
+                    echo "## Recommended Actions" >> data_audit.md
+                    echo "" >> data_audit.md
+                    echo "1. Remove these files from the repository using git commands" >> data_audit.md
+                    echo "2. Add them to your .gitignore file" >> data_audit.md
+                    echo "3. Document data sources in docs/data_sources.md" >> data_audit.md
+                    echo "" >> data_audit.md
+                    echo "**Remember:** Data files should never be committed to Git. See the README files in data directories for proper data management guidelines." >> data_audit.md
+                    
+                    echo "FOUND_DATA_FILES=true" >> $GITHUB_ENV
+                    echo "FOUND_FILE_COUNT=$FOUND_FILES" >> $GITHUB_ENV
+                    echo "::error::Found $FOUND_FILES total files in protected data directories!"
+                    cat data_audit.md
+                  else
+                    echo "✅ All protected data directories are clean (only contain README.md and .gitignore files)"
+                    echo "FOUND_DATA_FILES=false" >> $GITHUB_ENV
+                  fi
+
+            # If this is a pull request and we found data files, comment on the PR
+            - name: Comment on Pull Request
+              if: github.event_name == 'pull_request' && env.FOUND_DATA_FILES == 'true'
+              uses: actions/github-script@v6
+              with:
+                  github-token: ${{ secrets.GITHUB_TOKEN }}
+                  script: |
+                      const fs = require('fs');
+                      const reportContent = fs.readFileSync('data_audit.md', 'utf8');
+
+                      await github.rest.issues.createComment({
+                        owner: context.repo.owner,
+                        repo: context.repo.repo,
+                        issue_number: context.issue.number,
+                        body: reportContent
+                      });
+
+            # If this is a push to main and we found data files, create an issue
+            - name: Create Issue for Data Files
+              if: github.event_name == 'push' && github.ref == 'refs/heads/main' && env.FOUND_DATA_FILES == 'true'
+              uses: actions/github-script@v6
+              with:
+                  github-token: ${{ secrets.GITHUB_TOKEN }}
+                  script: |
+                      const fs = require('fs');
+                      const reportContent = fs.readFileSync('data_audit.md', 'utf8');
+
+                      await github.rest.issues.create({
+                        owner: context.repo.owner,
+                        repo: context.repo.repo,
+                        title: `🚨 Data files detected in protected directories: ${process.env.FOUND_FILE_COUNT} files`,
+                        body: reportContent,
+                        labels: ['data-management', 'needs-attention']
+                      });
