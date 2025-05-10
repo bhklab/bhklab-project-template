@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0](https://github.com/bhklab/bhklab-project-template/compare/v0.3.1...v0.4.0) (2025-05-10)
+
+
+### Features
+
+* update project_name and project_description placeholders for dynamic values ([ca80e5f](https://github.com/bhklab/bhklab-project-template/commit/ca80e5ff457e44a951589b8da5e72147883f2821))
+
 ## [0.3.1](https://github.com/bhklab/bhklab-project-template/compare/v0.3.0...v0.3.1) (2025-05-10)
 
 
