@@ -60,8 +60,7 @@ repo_location:
 project_name:
     type: str # Any value will be treated raw as a string
     help: What is your project name? (human readable allowed i.e spaces, special characters)
-    default: "My Amazing BHKLab Project"
-    placeholder: "My Amazing BHKLab Project"
+    placeholder: "{{ _folder_name.replace('_', ' ').replace('-', ' ').title() }}"
     validator: "{% from pathjoin('includes', 'validators.jinja') import validate_project_name %}{{ validate_project_name(project_name) }}"
 
 project_slug:
@@ -74,7 +73,7 @@ project_slug:
 project_description:
     type: str
     help: A short description of your {{ project_name }} project.
-    default: "TODO:: Add a short description of {{ project_name }} here."
+    placeholder: "{{ project_name }} is a project that does XYZ"
 
 python_version:
     type: str
