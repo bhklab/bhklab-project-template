@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.1](https://github.com/bhklab/bhklab-project-template/compare/v0.3.0...v0.3.1) (2025-05-10)
+
+
+### Bug Fixes
+
+* ascii art ([3ca1013](https://github.com/bhklab/bhklab-project-template/commit/3ca1013311614640fa9dae48c482cf8c1f72009d))
+
 ## [0.3.0](https://github.com/bhklab/bhklab-project-template/compare/v0.2.0...v0.3.0) (2025-05-09)
 
 
