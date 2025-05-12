@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.5](https://github.com/bhklab/bhklab-project-template/compare/v0.5.4...v0.5.5) (2025-05-12)
+
+
+### Bug Fixes
+
+* correct script name in pyproject.toml ([6a164ec](https://github.com/bhklab/bhklab-project-template/commit/6a164ec2fcd96dc0ae993af5fa5c64d4fdfd6b9a))
+
 ## [0.5.4](https://github.com/bhklab/bhklab-project-template/compare/v0.5.3...v0.5.4) (2025-05-12)
 
 
