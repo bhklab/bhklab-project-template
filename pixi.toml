@@ -2,7 +2,7 @@
 authors = ["Jermiah Joseph <jermiahjoseph98@gmail.com>"]
 channels = ["conda-forge"]
 name = "bhklab_test_template"
-platforms = ["osx-arm64"]
+platforms = ["osx-arm64", "linux-64"]
 description = "A simple template for BHKLAB projects using pixi"
 license = "MIT"
 
