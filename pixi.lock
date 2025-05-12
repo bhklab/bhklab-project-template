@@ -246,14 +246,14 @@ packages:
   timestamp: 1733325872620
 - pypi: .
   name: bhklab-project-template
-  version: 0.1.0
-  sha256: b5fa683d9b8d6645a4429d28f1ebe9ea9346da6fb73851e85839600cc1581e26
+  version: 0.4.0
+  sha256: 6d59e5629c09dfb058434fdefe4b96743b0e9be3fdb0f3bdf900672b335fd90c
   requires_dist:
   - rich>=14.0.0,<15
   - click>=8.2.0,<9
   - copier>=9.7.1,<10
   - rich-click
-  requires_python: '>=3.11'
+  requires_python: '>=3.12'
   editable: true
 - conda: https://conda.anaconda.org/conda-forge/osx-arm64/brotli-python-1.1.0-py313h3579c5c_2.conda
   sha256: b0a66572f44570ee7cc960e223ca8600d26bb20cfb76f16b95adf13ec4ee3362
