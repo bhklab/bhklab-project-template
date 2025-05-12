@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.6](https://github.com/bhklab/bhklab-project-template/compare/v0.5.5...v0.5.6) (2025-05-12)
+
+
+### Bug Fixes
+
+* update dependency name in pixi.toml to use hyphen instead of underscore ([38e9c85](https://github.com/bhklab/bhklab-project-template/commit/38e9c85ffb9ed2e926271be67ebe9583f8d844b8))
+
 ## [0.5.5](https://github.com/bhklab/bhklab-project-template/compare/v0.5.4...v0.5.5) (2025-05-12)
 
 
