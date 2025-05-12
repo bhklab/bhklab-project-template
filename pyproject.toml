@@ -39,7 +39,7 @@ homepage = "https://github.com/bhklab/bhklab-project-template"
 issues = "https://github.com/bhklab/bhklab-project-template/issues"
 
 [project.scripts]
-bhk-project-template = "bhklab_project_template.__init__:cli"
+bhklab-project-template = "bhklab_project_template.__init__:cli"
 
 [build-system]
 build-backend = "hatchling.build"
