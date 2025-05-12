@@ -44,7 +44,7 @@ jobs:
                   Build source and wheel distribution + check build
                   # this will build the source and wheel into the dist/ directory
               run: |
-                  pixi run --environment publish check-build
+                  pixi run --environment publish build
 
             - name: Publish distribution to PyPI
               uses: pypa/gh-action-pypi-publish@release/v1

@@ -31,11 +31,11 @@ python = ">=3.13.3,<3.14"
 
 # Publish
 [feature.publish.dependencies]
-twine = ">=6.1.0,<7"
-python-build = ">=1.2.2,<2"
+hatch = ">=1.2.0,<2"
+hatchling = ">=1.0.0,<2"
 
 [feature.publish.tasks]
-build = { cmd = "python -m build", description = "Build the package into the dist/ directory" }
-check-build = { cmd = "python -m twine check dist/*", depends-on = [
-    "build",
-], description = "Check that the package can be uploaded" }
+build = { cmd = ["hatch", "build", "--clean"], inputs = [
+    "src",
+    "pyproject.toml",
+], outputs = ["dist/*"], description = "🛠️ Builds the packages" }
