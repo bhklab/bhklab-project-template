@@ -14,7 +14,7 @@ jobs:
     release-please:
         runs-on: ubuntu-latest
         outputs:
-          release_created: ${{ steps.release.outputs.release_created }}
+            release_created: ${{ steps.release.outputs.release_created }}
         concurrency:
             group: ${{ github.workflow }}-${{ github.ref }}
 
@@ -27,37 +27,36 @@ jobs:
     publish-pypi:
         runs-on: ubuntu-latest
         needs: release-please
-        permissions:
-            id-token: write
         if: ${{ needs.release-please.outputs.release_created }}
 
         steps:
-        - uses: actions/checkout@v4
+            - uses: actions/checkout@v4
 
-        - name: Install Pixi
-          uses: prefix-dev/setup-pixi@v0.8.3
-          with:
-            environments: publish
-            pixi-version: v0.46.0
-            locked: false
+            - name: Install Pixi
+              uses: prefix-dev/setup-pixi@v0.8.3
+              with:
+                  environments: publish
+                  pixi-version: v0.46.0
+                  locked: false
 
-        - name: Build source and wheel distribution + check build
-            # this will build the source and wheel into the dist/ directory
-          run: |
-            pixi run --environment publish check-build
+            - name:
+                  Build source and wheel distribution + check build
+                  # this will build the source and wheel into the dist/ directory
+              run: |
+                  pixi run --environment publish check-build
 
-        - name: Publish distribution to PyPI
-          uses: pypa/gh-action-pypi-publish@release/v1
-          env:
-            PYPI_USERNAME: __token__
-            PYPI_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+            - name: Publish distribution to PyPI
+              uses: pypa/gh-action-pypi-publish@release/v1
+              env:
+                  PYPI_USERNAME: __token__
+                  PYPI_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
 
-        - name: Update lockfile
-          run: |
+            - name: Update lockfile
+              run: |
                 pixi lock
                 git config --global user.email "github-actions[bot]@users.noreply.github.com"
                 git config --global user.name "github-actions[bot]"
                 git add pixi.lock
-                git commit -m "chore: Update pixi.lock"
-                git push
-
+                git commit -m "chore: Update pixi.lock" || echo "no changes"
+                git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+                git push origin main
