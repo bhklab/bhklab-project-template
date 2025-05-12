@@ -1,18 +1,42 @@
 [project]
-authors = [{ name = "Jermiah Joseph", email = "jermiahjoseph98@gmail.com" }]
 name = "bhklab-project-template"
-requires-python = ">= 3.12"
 version = "0.5.2"
 description = "A simple CLI tool to create new BHKLab projects from a template"
-readme = "README.md"
-keywords = ["template", "bhklab", "project"]
+authors = [{ name = "Jermiah Joseph", email = "jermiahjoseph98@gmail.com" }]
+maintainers = [
+    { name = "Jermiah Joseph", email = "jermiahjoseph98@gmail.com" },
+    { name = "Benjamin Haibe-Kains", email = "benjamin.haibe.kains@utoronto.ca" },
+]
 license = { text = "MIT" }
+readme = "README.md"
+requires-python = ">= 3.12"
+keywords = ["template", "bhklab", "project"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Operating System :: MacOS",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Utilities",
+    "Typing :: Typed",
+]
 dependencies = [
     "rich>=14.0.0,<15",
     "click>=8.2.0,<9",
     "copier>=9.7.1,<10",
     "rich-click"
 ]
+
+[project.urls]
+homepage = "https://github.com/bhklab/bhklab-project-template"
+issues = "https://github.com/bhklab/bhklab-project-template/issues"
 
 [project.scripts]
 bhk-project-template = "bhklab_project_template.__init__:cli"
