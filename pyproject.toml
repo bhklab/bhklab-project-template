@@ -2,7 +2,7 @@
 authors = [{ name = "Jermiah Joseph", email = "jermiahjoseph98@gmail.com" }]
 name = "bhklab-project-template"
 requires-python = ">= 3.12"
-version = "0.5.0"
+version = "0.5.1"
 description = "A simple CLI tool to create new BHKLab projects from a template"
 readme = "README.md"
 keywords = ["template", "bhklab", "project"]

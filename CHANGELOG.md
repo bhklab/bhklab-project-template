@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.1](https://github.com/bhklab/bhklab-project-template/compare/v0.5.0...v0.5.1) (2025-05-12)
+
+
+### Bug Fixes
+
+* move default ([f932f8c](https://github.com/bhklab/bhklab-project-template/commit/f932f8c04d134e903474c948beb2404ec721652d))
+
 ## [0.5.0](https://github.com/bhklab/bhklab-project-template/compare/v0.4.0...v0.5.0) (2025-05-12)
 
 
