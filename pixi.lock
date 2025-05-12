@@ -482,7 +482,7 @@ packages:
 - pypi: .
   name: bhklab-project-template
   version: 0.5.3
-  sha256: 0d081ab7c1e6429c4a87ac177c065ec4c61179392b7f40c2fbe44f0dc01b0706
+  sha256: 7b56e479504e52f445f684c961a8b4567c37a3d84e6ff573d8251b3887330a57
   requires_dist:
   - rich>=14.0.0,<15
   - click>=8.2.0,<9
