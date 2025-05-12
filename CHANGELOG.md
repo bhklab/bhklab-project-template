@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.2](https://github.com/bhklab/bhklab-project-template/compare/v0.5.1...v0.5.2) (2025-05-12)
+
+
+### Bug Fixes
+
+* dont lock ([2832d1c](https://github.com/bhklab/bhklab-project-template/commit/2832d1ced3268f962e6a43ff4fb6d69fca1a47b7))
+
 ## [0.5.1](https://github.com/bhklab/bhklab-project-template/compare/v0.5.0...v0.5.1) (2025-05-12)
 
 
