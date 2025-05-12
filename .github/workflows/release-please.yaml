@@ -50,3 +50,13 @@ jobs:
           env:
             PYPI_USERNAME: __token__
             PYPI_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+
+        - name: Update lockfile
+          run: |
+                pixi lock
+                git config --global user.email "github-actions[bot]@users.noreply.github.com"
+                git config --global user.name "github-actions[bot]"
+                git add pixi.lock
+                git commit -m "chore: Update pixi.lock"
+                git push
+
