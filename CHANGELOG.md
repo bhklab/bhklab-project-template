@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.0](https://github.com/bhklab/bhklab-project-template/compare/v0.6.0...v0.7.0) (2025-05-12)
+
+
+### Features
+
+* dont hatch configure ([720632e](https://github.com/bhklab/bhklab-project-template/commit/720632e04f4053e6bee81877e179a9dd75df2da3))
+
 ## [0.6.0](https://github.com/bhklab/bhklab-project-template/compare/v0.5.6...v0.6.0) (2025-05-12)
 
 
