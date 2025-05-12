@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.5.0](https://github.com/bhklab/bhklab-project-template/compare/v0.4.0...v0.5.0) (2025-05-12)
+
+
+### Features
+
+* Add BHKLab project template CLI tool ([#12](https://github.com/bhklab/bhklab-project-template/issues/12)) ([4209392](https://github.com/bhklab/bhklab-project-template/commit/4209392626923eb0147de6013367cebc1321e2e0))
+* Add lockfile update step in release workflow ([daece9c](https://github.com/bhklab/bhklab-project-template/commit/daece9c356b5063c0ed183345d831caef5e54d96))
+
 ## [0.4.0](https://github.com/bhklab/bhklab-project-template/compare/v0.3.1...v0.4.0) (2025-05-10)
 
 
