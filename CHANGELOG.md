@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.5.4](https://github.com/bhklab/bhklab-project-template/compare/v0.5.3...v0.5.4) (2025-05-12)
+
+
+### Bug Fixes
+
+* add wheel and sdist targets to build configuration ([3868184](https://github.com/bhklab/bhklab-project-template/commit/3868184be8cc23c9fe0ed574ff843764184fbe4f))
+* update sha256 checksum and add LICENSE file ([fa33b17](https://github.com/bhklab/bhklab-project-template/commit/fa33b1747488a4209bed446d253fea4f30815f71))
+
 ## [0.5.3](https://github.com/bhklab/bhklab-project-template/compare/v0.5.2...v0.5.3) (2025-05-12)
 
 
