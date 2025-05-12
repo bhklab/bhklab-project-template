@@ -13,7 +13,7 @@ quality = { features = ["lint"] }
 publish = { features = ["publish"] }
 
 [pypi-dependencies]
-bhklab_project_template = { path = ".", editable = true }
+bhklab-project-template = { path = ".", editable = true }
 
 [feature.lint.dependencies]
 pre-commit-hooks = ">=4.6.0,<4.7"
