@@ -1,0 +1,22 @@
+[project]
+authors = [{ name = "Jermiah Joseph", email = "jermiahjoseph98@gmail.com" }]
+name = "bhklab-project-template"
+requires-python = ">= 3.12"
+version = "0.4.0"
+description = "A simple CLI tool to create new BHKLab projects from a template"
+readme = "README.md"
+keywords = ["template", "bhklab", "project"]
+license = { text = "MIT" }
+dependencies = [
+    "rich>=14.0.0,<15",
+    "click>=8.2.0,<9",
+    "copier>=9.7.1,<10",
+    "rich-click"
+]
+
+[project.scripts]
+bhk-project-template = "bhklab_project_template.__init__:cli"
+
+[build-system]
+build-backend = "hatchling.build"
+requires = ["hatchling"]
