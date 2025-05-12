@@ -481,8 +481,8 @@ packages:
   timestamp: 1733325872620
 - pypi: .
   name: bhklab-project-template
-  version: 0.5.3
-  sha256: 7b56e479504e52f445f684c961a8b4567c37a3d84e6ff573d8251b3887330a57
+  version: 0.5.4
+  sha256: 37505cdbf188d96be422a4cfad5720352e4b2f2d899df071ffa76d624c488e35
   requires_dist:
   - rich>=14.0.0,<15
   - click>=8.2.0,<9
