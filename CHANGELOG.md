@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.0](https://github.com/bhklab/bhklab-project-template/compare/v0.5.6...v0.6.0) (2025-05-12)
+
+
+### Features
+
+* update build to hatch ([2067a86](https://github.com/bhklab/bhklab-project-template/commit/2067a8628d95f0726b5756e33ddc6183b2953892))
+
 ## [0.5.6](https://github.com/bhklab/bhklab-project-template/compare/v0.5.5...v0.5.6) (2025-05-12)
 
 
