@@ -39,6 +39,7 @@ jobs:
           with:
             environments: publish
             pixi-version: v0.46.0
+            locked: false
 
         - name: Build source and wheel distribution + check build
             # this will build the source and wheel into the dist/ directory
