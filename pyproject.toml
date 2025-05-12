@@ -44,22 +44,3 @@ bhklab-project-template = "bhklab_project_template.__init__:cli"
 [build-system]
 build-backend = "hatchling.build"
 requires = ["hatchling"]
-[tool.hatch.build.targets.wheel]
-packages = ["src/bhklab_project_template"]
-include = [
-    "pyproject.toml",
-    "README.md",
-    "src/bhklab_project_template/py.typed",
-    "src/**",
-    "LICENSE.md"
-]
-[tool.hatch.build.targets.sdist]
-# Automatically discovers packages in `src/`
-packages = ["src/bhklab_project_template"]
-include = [
-    "pyproject.toml",
-    "README.md",
-    "src/bhklab_project_template/py.typed",
-    "src/**",
-    "LICENSE.md"
-]
