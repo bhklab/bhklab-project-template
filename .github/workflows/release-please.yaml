@@ -13,7 +13,8 @@ permissions:
 jobs:
     release-please:
         runs-on: ubuntu-latest
-
+        outputs:
+          release_created: ${{ steps.release.outputs.release_created }}
         concurrency:
             group: ${{ github.workflow }}-${{ github.ref }}
 
@@ -21,9 +22,31 @@ jobs:
             - uses: GoogleCloudPlatform/release-please-action@v4
               id: release
               with:
-                  release-type: simple
+                  release-type: python
 
-            - uses: actions/checkout@v4.2.0
-              if: ${{ steps.release.outputs.release_created }}
-              with:
-                  fetch-depth: 0
+    publish-pypi:
+        runs-on: ubuntu-latest
+        needs: release-please
+        permissions:
+            id-token: write
+        if: ${{ needs.release-please.outputs.release_created }}
+
+        steps:
+        - uses: actions/checkout@v4
+
+        - name: Install Pixi
+          uses: prefix-dev/setup-pixi@v0.8.3
+          with:
+            environments: publish
+            pixi-version: v0.42.1
+
+        - name: Build source and wheel distribution + check build
+            # this will build the source and wheel into the dist/ directory
+          run: |
+            pixi run --environment publish check-build
+
+        - name: Publish distribution to PyPI
+          uses: pypa/gh-action-pypi-publish@release/v1
+          env:
+            PYPI_USERNAME: __token__
+            PYPI_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
