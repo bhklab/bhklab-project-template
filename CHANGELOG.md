@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.5.3](https://github.com/bhklab/bhklab-project-template/compare/v0.5.2...v0.5.3) (2025-05-12)
+
+
+### Bug Fixes
+
+* add id-token permission for GitHub Actions ([66a91e1](https://github.com/bhklab/bhklab-project-template/commit/66a91e13b2c72f4381ded61f24e88da622ddf4f1))
+* correct indentation and streamline publish-pypi job steps ([5e9cacd](https://github.com/bhklab/bhklab-project-template/commit/5e9cacd137e6a46ac8ae712b785cce1b123dd569))
+* update project metadata and add type hinting support ([5a6649d](https://github.com/bhklab/bhklab-project-template/commit/5a6649da2696c8fff9a8f6331ba99389f254f6b4))
+* update project version to 0.5.2 and sha256 checksum ([defd4c3](https://github.com/bhklab/bhklab-project-template/commit/defd4c3eecb4a051b3be1977b4b43fcbfab69a10))
+
 ## [0.5.2](https://github.com/bhklab/bhklab-project-template/compare/v0.5.1...v0.5.2) (2025-05-12)
 
 
