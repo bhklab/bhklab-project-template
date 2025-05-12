@@ -11,6 +11,8 @@ import copier
 
 import rich_click as click
 
+DEFAULT_TEMPLATE = "gh:bhklab/bhklab-project-template"
+
 
 @click.command()
 @click.argument(
@@ -37,7 +39,7 @@ def cli(
     DESTINATION is the path to the new project directory.
     """
     copier.run_copy(
-        src_path="gh:bhklab/bhklab-project-template",
+        src_path=DEFAULT_TEMPLATE,
         dst_path=destination,
         unsafe=True,
         data={
