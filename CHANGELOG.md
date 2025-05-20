@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.10.0](https://github.com/bhklab/bhklab-project-template/compare/v0.9.0...v0.10.0) (2025-05-20)
+
+
+### Features
+
+* add MkDocs configuration and documentation build tasks ([#25](https://github.com/bhklab/bhklab-project-template/issues/25)) ([9170e4b](https://github.com/bhklab/bhklab-project-template/commit/9170e4b2bf2435777e38d86e2295fc9348b510a6))
+
 ## [0.9.0](https://github.com/bhklab/bhklab-project-template/compare/v0.8.0...v0.9.0) (2025-05-20)
 
 
