@@ -57,7 +57,7 @@ jobs:
 
             - name: Deploy documentation
               run: |
-                  pixi run --environment mkdocs gh-deploy
+                  pixi run --environment docs mkdocs gh-deploy
 
             - name: Update lockfile
               run: |
