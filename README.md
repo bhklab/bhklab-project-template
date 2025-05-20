@@ -6,6 +6,9 @@
 - [Project Overview](#project-overview)
 - [Requirements](#requirements)
 - [Usage](#usage)
+  - [using `pixi`](#using-pixi)
+  - [using `uv`](#using-uv)
+  - [using `copier`](#using-copier)
 - [Documentation](#documentation)
   - [Meeting Notes](docs/meeting_notes.md)
   - [Status](docs/status.md)
@@ -61,6 +64,8 @@ Follow the instructions to authenticate with your GitHub account.
 **Run the following command to create a new project.**
 **Replace `<PROJECT_NAME>` with the name of your project.**
 
+### using `pixi`
+
 ```console
 pixi exec bhklab-project-template <PROJECT_NAME>
 ```
@@ -69,6 +74,18 @@ pixi exec bhklab-project-template <PROJECT_NAME>
 
 ```console
 pixi exec bhklab-project-template gdcs-drug-combo
+```
+
+### using `uv`
+
+```console
+uv run -m bhklab_project_template <PROJECT_NAME>
+```
+
+### using `copier`
+
+```console
+pixi exec copier copy --trust gh:bhklab/bhklab-project-template <PROJECT_NAME>
 ```
 
 - This will create a new directory with the name of your project and copy the
