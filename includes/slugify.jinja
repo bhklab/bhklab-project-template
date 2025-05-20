@@ -1,9 +1,0 @@
-{# For simplicity ... -#}
-{% macro slugify(value) -%}
-    {{ value|lower|replace(' ', '-') }}
-{%- endmacro %}
-
-{# creates bhklab._slug_name_@gmail.com -#}
-{% macro slugify_email(full_name) -%}
-    {{ 'bhklab.' ~ full_name|lower|replace(' ', '') ~ '@gmail.com' }}
-{%- endmacro %}
