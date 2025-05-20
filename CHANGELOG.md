@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.0](https://github.com/bhklab/bhklab-project-template/compare/v0.7.0...v0.8.0) (2025-05-20)
+
+
+### Features
+
+* Add environment variables and example usage scripts ([#8](https://github.com/bhklab/bhklab-project-template/issues/8)) ([78758d1](https://github.com/bhklab/bhklab-project-template/commit/78758d10e2aa3d08ef966b7d3fa17326bdb8d391))
+
 ## [0.7.0](https://github.com/bhklab/bhklab-project-template/compare/v0.6.0...v0.7.0) (2025-05-12)
 
 
