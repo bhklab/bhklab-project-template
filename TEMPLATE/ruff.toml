@@ -91,7 +91,8 @@ convention = "numpy"
 [lint.per-file-ignores]
 # Allow assert statements in test files
 "tests/*" = ["S101"]
-
+# allow these for jupyter notebooks
+"**/*.ipynb" = ["I", "F", "T20"]
 # https://docs.astral.sh/ruff/settings/#mccabe
 [lint.mccabe]
 # Set maximum cyclomatic complexity to prevent overly complex functions
