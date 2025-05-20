@@ -8,6 +8,10 @@ on:
     # Allow manual triggering
     workflow_dispatch:
 
+permissions:
+  contents: write  # needed for issues.create
+  issues: write    # needed for issues.create and issues.createComment
+
 jobs:
     check-data-directories:
         name: Check for committed data files
