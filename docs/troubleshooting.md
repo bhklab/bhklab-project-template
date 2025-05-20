@@ -5,9 +5,6 @@ of the remote GitHub repository and the GitHub Actions workflow, and deploying
 the documentation to GitHub Pages.
 However in case you run into issues, here are some troubleshooting steps.
 
-<details>
-<summary>extra setup steps if needed</summary>
-
 ## Setting up GitHub Actions
 
 **Step 1: Go to `settings` > `Actions` > `General` in your GitHub repository.**
@@ -21,17 +18,19 @@ However in case you run into issues, here are some troubleshooting steps.
 
 ## Setting up GitHub Pages
 
->[!NOTE]
-> Before being able to deploy the documentation, you need to set up GitHub Pages.
-> This is a one-time setup for the repository. The documentation will be deployed
-> automatically to GitHub Pages when you push to the `main` branch.
-> However, you need to create a `gh-pages` branch in your repository.
-> You can do this by running the following command:
-    ```console
-    git branch gh-pages
-    git push origin gh-pages
-    ```
-> This is only possible after you have created the repository on GitHub.
+!!! warning "Warning"
+    Before being able to deploy the documentation, you need to set up GitHub Pages.
+    This is a one-time setup for the repository. The documentation will be deployed
+    automatically to GitHub Pages when you push to the `main` branch.
+    However, you need to create a `gh-pages` branch in your repository.
+    You can do this by running the following command:
+
+        ```
+        git branch gh-pages
+        git push origin gh-pages
+        ```
+
+    This is only possible after you have created the repository on GitHub.
 
 The template will use mkdocs to build the documentation and deploy it to GitHub Pages.
 To set up GitHub Pages, follow these steps:
@@ -43,5 +42,3 @@ To set up GitHub Pages, follow these steps:
 
 **Step 4: Click `Save`.**
 ![gh-pages](./assets/gh-pages-settings.png)
-
-</details>

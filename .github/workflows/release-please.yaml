@@ -36,7 +36,9 @@ jobs:
             - name: Install Pixi
               uses: prefix-dev/setup-pixi@v0.8.3
               with:
-                  environments: publish
+                  environments: >-
+                      publish
+                      docs
                   pixi-version: v0.46.0
                   locked: false
 
@@ -52,12 +54,17 @@ jobs:
                   PYPI_USERNAME: __token__
                   PYPI_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
 
+
+            - name: Deploy documentation
+              run: |
+                  pixi run --environment mkdocs gh-deploy
+
             - name: Update lockfile
               run: |
-                pixi lock
-                git config --global user.email "github-actions[bot]@users.noreply.github.com"
-                git config --global user.name "github-actions[bot]"
-                git add pixi.lock
-                git commit -m "chore: Update pixi.lock" || echo "no changes"
-                git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
-                git push origin main
+                  pixi lock
+                  git config --global user.email "github-actions[bot]@users.noreply.github.com"
+                  git config --global user.name "github-actions[bot]"
+                  git add pixi.lock
+                  git commit -m "chore: Update pixi.lock" || echo "no changes"
+                  git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+                  git push origin main

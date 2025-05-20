@@ -1,31 +1,26 @@
 # Status and Roadmap
 
-<details>
-<summary>Status</summary>
-
 - [x] Basic template structure with copier
 - [x] Pixi integration with conda-forge/bioconda channels and platforms (linux-64, osx-arm64, win-64, osx-64)
 - [x] DMP structure with proper README files
-  - [x] workflow/notebooks
-  - [x] workflow/scripts
-  - [x] data/rawdata (gitignored with README)
-  - [x] data/procdata (gitignored with README)
-  - [x] data/results (gitignored with README)
+    - [x] workflow/notebooks
+    - [x] workflow/scripts
+    - [x] data/rawdata (gitignored with README)
+    - [x] data/procdata (gitignored with README)
+    - [x] data/results (gitignored with README)
 - [x] MkDocs setup with basic pages structure
-  - [x] Home page (links to README)
-  - [x] Usage page (how to run code)
-  - [x] Data Sources page (documentation for rawdata)
-  - [x] Developer Notes page (working notes/journal)
+    - [x] Home page (links to README)
+    - [x] Usage page (how to run code)
+    - [x] Data Sources page (documentation for rawdata)
+    - [x] Developer Notes page (working notes/journal)
 - [x] GitHub repository creation automation with gh CLI
 - [x] GitHub Pages setup with automatic deployment
 - [x] GitHub Actions workflow for releases
+- [x] GitHub Actions to audit DMP structure (check for accidental commits in data directories)
+- [x] Conventional PR title enforcement in GitHub Actions
 - [ ] Example walkthrough of creating a project with the template
 - [ ] Add pre-commit hooks for basic quality checks
-- [ ] GitHub Actions to audit DMP structure (check for accidental commits in data directories)
-- [x] Conventional PR title enforcement in GitHub Actions
 - [ ] Add section for future links to manuscript/publication in README template
 - [ ] Create additional environment for snakemake workflows if needed
 - [ ] Add optional R project template support
 - [ ] Create testing framework for the template itself
-
-</details>

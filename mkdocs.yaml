@@ -1,0 +1,41 @@
+site_name: bhklab-project-template
+repo_url: https://github.com/bhklab/bhklab-project-template
+repo_name: bhklab-project-template
+site_description: Package documentation for bhklab-project-template
+site_author: Jermiah Joseph
+
+# The directory where the documentation files are located
+docs_dir: docs
+
+# The directory where the documentation is built (add to .gitignore if changed)
+site_dir: site
+
+# This is the branch where the documentation will pushed to using
+# 'mkdocs gh-deploy' and from where it will be served by GitHub Pages.
+remote_branch: gh-pages
+
+# Address when using 'mkdocs serve', format is 'address:port'
+dev_addr: 127.0.0.1:8003
+
+# The layout of the navigation links
+nav:
+  - Home: index.md
+  - Requirements: requirements.md
+  - Usage: usage.md
+  - Status: status.md
+  - Troubleshooting: troubleshooting.md
+  - "Meeting Notes": meeting_notes.md
+
+theme: readthedocs
+
+plugins:
+    - search # necessary for search functionality to work
+
+markdown_extensions:
+    - admonition
+    - codehilite
+    - footnotes
+    - tables
+
+extra:
+    homepage: https://bhklab.github.io/bhklab-project-template

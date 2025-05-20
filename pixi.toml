@@ -9,11 +9,14 @@ license = "MIT"
 [tasks]
 
 [environments]
+docs = { features = ["docs"] }
 quality = { features = ["lint"] }
 publish = { features = ["publish"] }
 
 [pypi-dependencies]
 bhklab-project-template = { path = ".", editable = true }
+
+############################################### LINT ###############################################
 
 [feature.lint.dependencies]
 pre-commit-hooks = ">=4.6.0,<4.7"
@@ -29,6 +32,8 @@ pre-commit_run = { cmd = "pre-commit run --all-files", depends-on = [
 [dependencies]
 python = ">=3.13.3,<3.14"
 
+############################################ PUBLISH ################################################
+
 # Publish
 [feature.publish.dependencies]
 hatch = ">=1.2.0,<2"
@@ -39,3 +44,21 @@ build = { cmd = ["hatch", "build", "--clean"], inputs = [
     "src",
     "pyproject.toml",
 ], outputs = ["dist/*"], description = "🛠️ Builds the packages" }
+
+
+############################################## DOCS ################################################
+
+[feature.docs.dependencies]
+mkdocs = "*"
+
+[feature.docs.tasks.doc-build]
+cmd = "mkdocs build -f mkdocs.yaml"
+inputs = ["docs"]
+outputs = ["site"]
+description = "Build documentation with mkdocs"
+
+[feature.docs.tasks.doc-serve]
+cmd = "mkdocs serve -f mkdocs.yaml"
+depends-on = ["doc-build"]
+inputs = ["docs"]
+description = "Serve documentation with mkdocs, runs doc-build first"
