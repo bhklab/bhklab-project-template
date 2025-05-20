@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.9.0](https://github.com/bhklab/bhklab-project-template/compare/v0.8.0...v0.9.0) (2025-05-20)
+
+
+### Features
+
+* add data directory audit workflow to check for committed data files ([#5](https://github.com/bhklab/bhklab-project-template/issues/5)) ([c60e45c](https://github.com/bhklab/bhklab-project-template/commit/c60e45c301ede72613efe38a8012dd15eafb0e17))
+* Add pypi-dependencies section and update example notebook and script to use `dirs` object ([#24](https://github.com/bhklab/bhklab-project-template/issues/24)) ([1d897ac](https://github.com/bhklab/bhklab-project-template/commit/1d897ac6ddd5875f8bc7725817d1556e30615928))
+
+
+### Documentation
+
+* Enhance documentation with new sections and troubleshooting guide ([dafdcac](https://github.com/bhklab/bhklab-project-template/commit/dafdcaceb52ebcd250125056c026047d803bd8ef))
+* Update README to include usage instructions for `uv` and `copier` ([7127124](https://github.com/bhklab/bhklab-project-template/commit/7127124446155aca03de772d3f3fd97cbfbf5bfb))
+
 ## [0.8.0](https://github.com/bhklab/bhklab-project-template/compare/v0.7.0...v0.8.0) (2025-05-20)
 
 
