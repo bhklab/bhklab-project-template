@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.10.1](https://github.com/bhklab/bhklab-project-template/compare/v0.10.0...v0.10.1) (2025-05-20)
+
+
+### Bug Fixes
+
+* **ci:** doc deploy ([158ed2e](https://github.com/bhklab/bhklab-project-template/commit/158ed2e65c641ba3d2572f7a9ceea9afb1447d29))
+* correct pypi path formatting and update project version to 0.10.0 ([613e2c0](https://github.com/bhklab/bhklab-project-template/commit/613e2c07063953c651e24c5ae5830666316f700d))
+
+
+### Documentation
+
+* add badges for visibility ([655247f](https://github.com/bhklab/bhklab-project-template/commit/655247fe5ae6861bd8a7f04072febbb1ef6fac72))
+
 ## [0.10.0](https://github.com/bhklab/bhklab-project-template/compare/v0.9.0...v0.10.0) (2025-05-20)
 
 
