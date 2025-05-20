@@ -1,7 +1,9 @@
-
 [workspace]
 name = "{{ project_slug }}"
-authors = ["{{ author_full_name }} <{{ author_email }}>"]
+authors = [
+    "{{ author_full_name }} <{{ author_email }}>"{% if has_additional_authors %}{% for author in additional_authors %},
+    "{{ author }}"{% endfor %}{% endif %}
+]
 description = "{{ project_description }}"
 license = "MIT"
 channels = ["conda-forge", "bioconda"]

@@ -8,46 +8,120 @@ _templates_suffix: .jinja
 _subdirectory: TEMPLATE
 
 _message_before_copy: |
-    Thanks for generating a project using our template.
+    ┌─────────────────────────────────────────────────────┐
+    │                                                     │
+    │   PROJECT GENERATOR                                 │
+    │                                                     │
+    │   ██████╗ ██╗  ██╗██╗  ██╗██╗      █████╗ ██████╗   │
+    │   ██╔══██╗██║  ██║██║ ██╔╝██║     ██╔══██╗██╔══██╗  │
+    │   ██████╔╝███████║█████╔╝ ██║     ███████║██████╔╝  │
+    │   ██╔══██╗██╔══██║██╔═██╗ ██║     ██╔══██║██╔══██╗  │
+    │   ██████╔╝██║  ██║██║  ██╗███████╗██║  ██║██████╔╝  │
+    │   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═════╝   │
+    │                                                     │
+    └─────────────────────────────────────────────────────┘
+
+    Thanks for generating a project using our template!
 
     You'll be asked a series of questions whose answers will be used to
-    generate a tailored project for you.
+    generate a tailored project following our best practices.
 
 _tasks:
-    # TODO:: clean this up before publishing the template for usage
-    - echo "Initializing a git repository..."
-    - git init --initial-branch=main
+    # Setup local project structure
+    - command: ["echo", "Setting up project..."]
 
-    - echo "Initializing pixi project..."
-    - pixi lock
+    # Initialize git repository
+    - command: ["git", "init", "--initial-branch=main"]
 
-    - echo "Creating project structure..."
-    - mkdir -p config metadata resources logs sandbox
+    # Initialize pixi environment
+    - command: ["pixi", "lock"]
 
-    - echo "Initializing git repository..."
+    # Install default environment
+    - command: ["pixi", "install"]
+
+    # Create project folder structure
+    - command:
+          ["mkdir", "-p", "config", "metadata", "resources", "logs", "sandbox"]
+
+    # Git setup and initial commit
+    # Stage files
     - command: ["git", "add", "."]
+
+    # Create initial commit
     - command: ["git", "commit", "-m", "feat: first commit"]
-    - pixi exec gh repo create --public --source=. --remote=origin --push {{ repo_location }}/{{ project_slug }}
 
-    - pixi exec gh repo edit --homepage="https://{{ repo_location }}.github.io/{{ project_slug }}" --description="{{ project_description }}"
+    # GitHub repository setup - only if user wants to publish
+    # Create GitHub repository
+    - command:
+          [
+              "pixi",
+              "exec",
+              "gh",
+              "repo",
+              "create",
+              "--public",
+              "--source=.",
+              "--remote=origin",
+              "--push",
+              "{{ repo_location }}/{{ project_slug }}",
+          ]
+      when: "{{ publish_to_github }}"
 
-    # we need to create the gh-pages branch to host the static site
-    # this command will create it and push it to the remote
+    # Set repository metadata
+    - command:
+          [
+              "pixi",
+              "exec",
+              "gh",
+              "repo",
+              "edit",
+              "--homepage=https://{{ repo_location }}.github.io/{{ project_slug }}",
+              "--description={{ project_description }}",
+          ]
+      when: "{{ publish_to_github }}"
+
+    # Create gh-pages branch
     - command: ["git", "branch", "gh-pages"]
-    - command: ["git", "push", "-u", "origin", "gh-pages"]
+      when: "{{ publish_to_github }}"
 
-    # turns out this is not needed, the gh-pages is setup automatically after creating the branch
-    # - pixi exec gh api --method POST repos/{{ repo_location }}/{{ project_slug }}/pages -f "source[branch]=gh-pages" -f "source[path]=/"
+    # Push gh-pages branch
+    - command: ["git", "push", "-u", "origin", "gh-pages"]
+      when: "{{ publish_to_github }}"
+
+    # Release 0.1.0
+    - command:
+          [
+              "pixi",
+              "exec",
+              "gh",
+              "release",
+              "create",
+              "v0.1.0",
+              "--title=Initial alpha release",
+              "--notes=Starting point for the project",
+          ]
+      when: "{{ publish_to_github }}"
 
 _message_after_copy: |
-    Your project "{{ project_name }}" has been created successfully!
+    ✅ Your project "{{ project_name }}" has been created successfully!
 
-    Next steps:
+    🚀 Next steps:
 
     1. Change directory to the project root:
 
-        $ cd {{ _copier_conf.dst_path }}
+       $ cd {{ _copier_conf.dst_path }}
 
-    2. Enter the `default` environment:
+    2. Enter the development environment:
 
-        $ pixi shell
+       $ pixi shell
+
+    3. Build and view the documentation:
+
+       $ pixi run doc-serve
+
+    {% if publish_to_github %}
+      📚 Documentation available at: https://{{ repo_location }}.github.io/{{ project_slug }}
+      (You may need to wait a few minutes for the site to be available)
+
+      🔗 Repository: https://github.com/{{ repo_location }}/{{ project_slug }}
+    {% endif %}

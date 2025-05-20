@@ -23,7 +23,46 @@ The BHKLab project template aims to provide:
 - Support for reproducible research with proper documentation
 - GitHub integrations and standardized workflow
 
-### Implementation Status
+## Requirements
+
+**1: Make sure you have the `pixi` tool installed.**
+
+Visit the [pixi documentation](https://pixi.sh)
+
+The following two commands should work:
+
+```console
+pixi exec gh --help
+
+pixi exec copier --help
+```
+
+**2: Make sure you have logged in to GitHub CLI.**
+
+```console
+pixi exec gh auth login --hostname 'github.com' --git-protocol https
+```
+
+Follow the instructions to authenticate with your GitHub account.
+
+> [!WARNING]
+> Make sure you have been added to our lab organization(s) before proceeding!
+
+## Usage
+
+**Run the following command to create a new project.**
+**Replace `<PROJECT_NAME>` with the name of your project.**
+
+- i.e `gdcs-drug-combo` would create a directory called `gdcs-drug-combo`
+
+```console
+pixi exec copier copy --trust gh:bhklab/bhklab-project-template <PROJECT_NAME>
+```
+
+## Status and Roadmap
+
+<details>
+<summary>Status</summary>
 
 - [x] Basic template structure with copier
 - [x] Pixi integration with conda-forge/bioconda channels and platforms (linux-64, osx-arm64, win-64, osx-64)
@@ -50,10 +89,14 @@ The BHKLab project template aims to provide:
 - [ ] Add optional R project template support
 - [ ] Create testing framework for the template itself
 
-### Latest Meeting Notes (Apr 25, 2025)
+</details>
 
 <details>
 <summary>Meeting Agenda and Action Items</summary>
+
+[google doc to meeting notes](https://docs.google.com/document/d/1Gj4BFFmzT4vQIFH8nRNhtGOJfGi515bs847rXFNPn_8/edit?tab=t.0)
+
+### Latest Meeting Notes (Apr 25, 2025)
 
 **Template Ideas:**
 
@@ -82,46 +125,6 @@ The BHKLab project template aims to provide:
 - Test with real projects 🚧
 
 </details>
-
-## Requirements
-
-**1: Make sure you have the `pixi` tool installed.**
-
-Visit the [pixi documentation](https://pixi.sh)
-
-The following two commands should work:
-
-```console
-pixi exec gh --help
-```
-
-```console
-pixi exec copier --help
-```
-
-**2: Make sure you have the `gh` github cli tool installed and logged in**
-
-```console
-pixi exec gh --version
-```
-
-```console
-pixi exec gh auth login --hostname 'github.com' --git-protocol https
-```
-
-Follow the instructions to authenticate with your GitHub account.
-
-> [!WARNING]
-> Make sure you have been added to our lab organization(s) before proceeding!
-
-## Usage
-
-**Run the following command to create a new project.**
-**Replace `${PROJECT_NAME}` with the name of your project.**
-
-```console
-pixi exec copier copy --trust --vcs-ref HEAD https://github.com/bhklab/bhklab-project-template <PROJECT_NAME>
-```
 
 ## Troubleshooting
 

@@ -2,8 +2,7 @@
 authors = ["Jermiah Joseph <jermiahjoseph98@gmail.com>"]
 channels = ["conda-forge"]
 name = "bhklab_test_template"
-platforms = ["osx-arm64"]
-version = "0.1.0"
+platforms = ["osx-arm64", "linux-64"]
 description = "A simple template for BHKLAB projects using pixi"
 license = "MIT"
 
@@ -11,9 +10,10 @@ license = "MIT"
 
 [environments]
 quality = { features = ["lint"] }
+publish = { features = ["publish"] }
 
-[dependencies]
-copier = ">=9.2.0,<9.3"
+[pypi-dependencies]
+bhklab-project-template = { path = ".", editable = true }
 
 [feature.lint.dependencies]
 pre-commit-hooks = ">=4.6.0,<4.7"
@@ -25,3 +25,17 @@ _pre-commit_setup = { cmd = "pre-commit install" }
 pre-commit_run = { cmd = "pre-commit run --all-files", depends-on = [
     "_pre-commit_setup"
 ], description = "Run basic pre-commit quality checks" }
+
+[dependencies]
+python = ">=3.13.3,<3.14"
+
+# Publish
+[feature.publish.dependencies]
+hatch = ">=1.2.0,<2"
+hatchling = ">=1.0.0,<2"
+
+[feature.publish.tasks]
+build = { cmd = ["hatch", "build", "--clean"], inputs = [
+    "src",
+    "pyproject.toml",
+], outputs = ["dist/*"], description = "🛠️ Builds the packages" }

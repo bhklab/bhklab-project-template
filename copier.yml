@@ -20,6 +20,34 @@ github_username:
     placeholder: "username"
     validator: "{% from pathjoin('includes', 'validators.jinja') import validate_github_username %}{{ validate_github_username(github_username) }}"
 
+has_additional_authors:
+    type: bool
+    help: Are there any additional authors for this project?
+    default: true
+    choices:
+        - true
+        - false
+
+additional_authors_raw:
+    type: str
+    help: Enter comma-separated list of additional authors (if any).
+    default: ""
+    placeholder: "Jane Doe, John Smith"
+    when: "{{ has_additional_authors == true }}"
+    validator: "{% from pathjoin('includes', 'validators.jinja') import validate_additional_authors %}{{ validate_additional_authors(additional_authors_raw) }}"
+
+# This is a nice trick to convert the comma-separated list into a list that
+# can be used in the template
+additional_authors:
+    help: Verify additional authors
+    type: yaml
+    when: false
+    default: |
+        {% set authors = additional_authors_raw.split(',') %}
+        {% for author in authors %}
+        - {{ author.strip() }}
+        {% endfor %}
+
 repo_location:
     type: str
     help: Is this project going to be hosted in the 'bhklab', 'BHKLAB-DataProcessing' or your {{ github_username }} GitHub organization?
@@ -32,8 +60,7 @@ repo_location:
 project_name:
     type: str # Any value will be treated raw as a string
     help: What is your project name? (human readable allowed i.e spaces, special characters)
-    default: "My Amazing BHKLab Project"
-    placeholder: "My Amazing BHKLab Project"
+    placeholder: "{{ _folder_name.replace('_', ' ').replace('-', ' ').title() }}"
     validator: "{% from pathjoin('includes', 'validators.jinja') import validate_project_name %}{{ validate_project_name(project_name) }}"
 
 project_slug:
@@ -46,7 +73,7 @@ project_slug:
 project_description:
     type: str
     help: A short description of your {{ project_name }} project.
-    default: "TODO:: Add a short description of {{ project_name }} here."
+    placeholder: "{{ project_name }} is a project that does XYZ"
 
 python_version:
     type: str
@@ -57,3 +84,9 @@ python_version:
         - "3.11"
         - "3.12"
         - "3.13"
+
+publish_to_github:
+    type: bool
+    help: Would you like to publish this project to GitHub now after generation?
+        (can be down manually later)
+    default: false
