@@ -33,7 +33,7 @@ def check_git_version() -> None:
         )
         version_str = result.stdout.strip().split()[-1]
         major, minor, _ = map(int, version_str.split("."))
-        logger.info(f"Git version: {version_str}")
+        logger.debug(f"Git version: {version_str}")
         if (major, minor) < MIN_GIT_VERSION:
             logger.error(
                 f"Your git version {version_str} is too old (requires >= {MIN_GIT_VERSION[0]}.{MIN_GIT_VERSION[1]})"
@@ -72,7 +72,7 @@ def check_pixi_installation() -> None:
         # Parse version string to compare with minimum version
         version_parts = tuple(map(int, version_str.split(".")))
 
-        logger.info(f"Pixi version: {version_str}")
+        logger.debug(f"Pixi version: {version_str}")
 
         if version_parts < MIN_PIXI_VERSION:
             min_version_str = ".".join(map(str, MIN_PIXI_VERSION))
@@ -138,7 +138,7 @@ def check_gh_login() -> Optional[str]:
             f"See {REQUIREMENTS_URL} for more information."
         )
     else:
-        logger.info("GitHub CLI is accessible through pixi and user is authenticated")
+        logger.debug("GitHub CLI is accessible through pixi and user is authenticated")
         # Extract username from output
         for line in result.stdout.strip().split("\n"):
             if "Logged in to github.com as" in line:
@@ -165,9 +165,9 @@ def check_all_requirements() -> None:
     check_pixi_installation()
     username = check_gh_login()
     if username:
-        logger.info(f"All requirements met! Authenticated to GitHub as: {username}")
+        logger.debug(f"All requirements met! Authenticated to GitHub as: {username}")
     else:
-        logger.info(
+        logger.debug(
             "All requirements met! GitHub authentication verified but username not detected."
         )
     logger.info("You're ready to use BHKLab Project Template!")

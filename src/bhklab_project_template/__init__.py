@@ -8,8 +8,9 @@ __version__ = "0.10.0"
 from pathlib import Path
 
 import copier
-
 import rich_click as click
+
+from bhklab_project_template.logging_config import configure_logging
 from bhklab_project_template.utils import check_all_requirements
 
 DEFAULT_TEMPLATE = "gh:bhklab/bhklab-project-template"
@@ -27,6 +28,11 @@ DEFAULT_TEMPLATE = "gh:bhklab/bhklab-project-template"
         resolve_path=True,
     ),
 )
+@click.option(
+    "--debug",
+    is_flag=True,
+    help="Enable debug logging.",
+)
 @click.help_option(
     "-h",
     "--help",
@@ -34,11 +40,15 @@ DEFAULT_TEMPLATE = "gh:bhklab/bhklab-project-template"
 )
 def cli(
     destination: Path,
+    debug: bool = False,
 ) -> None:
     """Create a new BHKLab project from a template.
 
     DESTINATION is the path to the new project directory.
     """
+    # Configure logging based on debug flag
+    configure_logging(debug=debug)
+
     # Check all requirements before running the template
     check_all_requirements()
 

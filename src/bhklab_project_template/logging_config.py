@@ -2,27 +2,31 @@
 A configured logger using the loguru library.
 """
 
-from loguru import logger
-from pathlib import Path
 import sys
+from pathlib import Path
+
+from loguru import logger
 from platformdirs import user_log_dir
 
 APP_NAME = "bhklab_project_template"
 APP_AUTHOR = "bhklab"
 
 
-def configure_logging() -> None:
+def configure_logging(debug: bool = False) -> None:
     """
     Configures the logging settings for the application.
+
+    Args:
+        debug: If True, sets the stderr logger level to DEBUG instead of INFO.
     """
     from bhklab_project_template import __version__ as version
 
     logger.remove()  # Remove default logger
     logger.add(
         sys.stderr,
-        level="INFO",
+        level="DEBUG" if debug else "INFO",
         format="<green>{time}</green> <level>{level}</level> <cyan>{message}</cyan>",
-        colorize=True
+        colorize=True,
     )
 
     log_dir = Path(
@@ -30,6 +34,7 @@ def configure_logging() -> None:
             appname=APP_NAME, appauthor=APP_AUTHOR, version=version, ensure_exists=True
         )
     )
+    logger.debug(f"Log directory: {log_dir}")
     logger.add(
         log_dir / f"{APP_NAME}.log",
         level="DEBUG",
