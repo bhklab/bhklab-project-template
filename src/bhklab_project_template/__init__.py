@@ -10,6 +10,7 @@ from pathlib import Path
 import copier
 
 import rich_click as click
+from bhklab_project_template.utils import check_all_requirements
 
 DEFAULT_TEMPLATE = "gh:bhklab/bhklab-project-template"
 
@@ -38,6 +39,9 @@ def cli(
 
     DESTINATION is the path to the new project directory.
     """
+    # Check all requirements before running the template
+    check_all_requirements()
+
     copier.run_copy(
         src_path=DEFAULT_TEMPLATE,
         dst_path=destination,
