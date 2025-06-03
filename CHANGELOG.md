@@ -1,5 +1,30 @@
 # Changelog
 
+## [0.11.0](https://github.com/bhklab/bhklab-project-template/compare/v0.10.0...v0.11.0) (2025-06-03)
+
+
+### Features
+
+* add debug logging for project creation in CLI ([d4abe28](https://github.com/bhklab/bhklab-project-template/commit/d4abe28d7fb7f65b31c4e66e01be48173c58c584))
+* add debug logging option and enhance logging configuration ([21e632b](https://github.com/bhklab/bhklab-project-template/commit/21e632b5f99319a33c2afd1868e340898a0bbb45))
+* add logging configuration using loguru ([1faf369](https://github.com/bhklab/bhklab-project-template/commit/1faf369911ea94fdaaaa9ef6d3d2c183782cb6eb))
+* add loguru and platformdirs as dependencies ([4adb31c](https://github.com/bhklab/bhklab-project-template/commit/4adb31c80054f19916fc38501abb0f178b6780dc))
+* add requirement checks before project creation ([f7c7429](https://github.com/bhklab/bhklab-project-template/commit/f7c7429d1734f1e6e154f6562a75267a15fbea9c))
+* add validator to prevent newlines in project description ([55447d6](https://github.com/bhklab/bhklab-project-template/commit/55447d6f8a492b8af1b0d2fbe06e8fab46e50ada))
+* implement system requirements checks for git, pixi, and GitHub CLI ([db21919](https://github.com/bhklab/bhklab-project-template/commit/db21919cced8b17aa08c2e9f2510a5b23d6f20e8))
+
+
+### Bug Fixes
+
+* **ci:** doc deploy ([158ed2e](https://github.com/bhklab/bhklab-project-template/commit/158ed2e65c641ba3d2572f7a9ceea9afb1447d29))
+* correct pypi path formatting and update project version to 0.10.0 ([613e2c0](https://github.com/bhklab/bhklab-project-template/commit/613e2c07063953c651e24c5ae5830666316f700d))
+
+
+### Documentation
+
+* add badges for visibility ([655247f](https://github.com/bhklab/bhklab-project-template/commit/655247fe5ae6861bd8a7f04072febbb1ef6fac72))
+* update project requirements documentation for clarity and completeness ([e2b402f](https://github.com/bhklab/bhklab-project-template/commit/e2b402fd91ee0fc9b4139d3364198e3ac768a376))
+
 ## [0.10.0](https://github.com/bhklab/bhklab-project-template/compare/v0.9.0...v0.10.0) (2025-05-20)
 
 
