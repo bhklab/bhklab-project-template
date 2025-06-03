@@ -46,6 +46,30 @@
               <ul class="current">
                 <li class="toctree-l1 current"><a class="reference internal current" href="#">Requirements</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#system-requirements">System Requirements</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#1-git-version-requirements">1. Git Version Requirements</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#2-pixi-tool-requirements">2. Pixi Tool Requirements</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#21-installing-pixi">2.1 Installing Pixi</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#22-verifying-installation">2.2 Verifying Installation</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#3-github-cli-authentication">3. GitHub CLI Authentication</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#31-logging-into-github-cli">3.1 Logging into GitHub CLI</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#32-verifying-authentication">3.2 Verifying Authentication</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a>
+    </li>
     </ul>
                 </li>
               </ul>
@@ -89,27 +113,65 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="requirements">Requirements</h1>
-<p><strong>1: Make sure you have the <code>pixi</code> tool installed.</strong></p>
-<p>Visit the <a href="https://pixi.sh">pixi documentation</a></p>
-<p>The following two commands should work:</p>
-<div class="codehilite"><pre><span></span><code><span class="go">pixi exec gh --help</span>
+                <h1 id="project-requirements">Project Requirements</h1>
+<p>This document outlines the necessary prerequisites for using the BHKLab Project Template.</p>
+<h2 id="system-requirements">System Requirements</h2>
+<h3 id="1-git-version-requirements">1. Git Version Requirements</h3>
+<p>You must have Git version 2.28 or higher installed on your system. This is because our template uses
+the <code>--initial-branch</code> option in the <code>git init</code> command.</p>
+<p>To check your Git version:</p>
+<div class="codehilite"><pre><span></span><code><span class="go">git --version</span>
+</code></pre></div>
 
+<p>If your Git version is below 2.28, please update it following instructions for your operating system.</p>
+<h3 id="2-pixi-tool-requirements">2. Pixi Tool Requirements</h3>
+<p><strong>Pixi</strong> is our preferred package manager and environment manager for this project.</p>
+<h4 id="21-installing-pixi">2.1 Installing Pixi</h4>
+<p>If you haven't installed Pixi yet:</p>
+<ol>
+<li>Visit the <a href="https://pixi.sh">pixi documentation</a> for installation instructions</li>
+<li>Follow the platform-specific instructions to install Pixi on your system</li>
+</ol>
+<h4 id="22-verifying-installation">2.2 Verifying Installation</h4>
+<p>After installation, run the following commands to verify that Pixi is properly installed:</p>
+<div class="codehilite"><pre><span></span><code><span class="gp"># </span>Check<span class="w"> </span>pixi<span class="w"> </span>version
+<span class="go">pixi --version</span>
+
+<span class="gp"># </span>Verify<span class="w"> </span>GitHub<span class="w"> </span>CLI<span class="w"> </span>is<span class="w"> </span>accessible<span class="w"> </span>through<span class="w"> </span>pixi
+<span class="go">pixi exec gh --help</span>
+
+<span class="gp"># </span>Verify<span class="w"> </span>our<span class="w"> </span>project<span class="w"> </span>template<span class="w"> </span>tool<span class="w"> </span>is<span class="w"> </span>accessible
 <span class="go">pixi exec bhklab-project-template --help</span>
 </code></pre></div>
 
-<p><strong>2: Make sure you have logged in to GitHub CLI.</strong></p>
+<p>If any of these commands fail, please reinstall Pixi or make sure it's properly added to your PATH.</p>
+<h3 id="3-github-cli-authentication">3. GitHub CLI Authentication</h3>
+<p>Our template interacts with GitHub APIs through the GitHub CLI tool (<code>gh</code>), which requires
+authentication.</p>
+<h4 id="31-logging-into-github-cli">3.1 Logging into GitHub CLI</h4>
+<p>Run the following command and follow the prompts to authenticate:</p>
 <div class="codehilite"><pre><span></span><code><span class="go">pixi exec gh auth login --hostname &#39;github.com&#39; --git-protocol https</span>
 </code></pre></div>
 
-<p>Follow the instructions to authenticate with your GitHub account.</p>
-<!-- > [!WARNING]
-> Make sure you have been added to our lab organization(s) before proceeding! -->
+<h4 id="32-verifying-authentication">3.2 Verifying Authentication</h4>
+<p>To verify you're properly authenticated:</p>
+<div class="codehilite"><pre><span></span><code><span class="go">pixi exec gh auth status</span>
+</code></pre></div>
 
+<p>This should show that you're logged in to GitHub.</p>
 <div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Make sure you have been added to our lab organization(s) before proceeding!</p>
+<p class="admonition-title">Organization Access</p>
+<p>Make sure you have been added to our lab organization(s) before proceeding with project creation!
+Without proper organization access, you won't be able to create repositories in our shared spaces.</p>
 </div>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p>If you encounter any issues setting up these requirements, please:</p>
+<ol>
+<li>Check the error messages for specific guidance</li>
+<li>Reach out to the lab's technical team if problems persist</li>
+</ol>
+<p>Our project template will automatically validate these requirements and provide helpful error messages
+if any prerequisites are not met.</p>
               
             </div>
           </div><footer>
