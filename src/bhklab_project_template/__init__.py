@@ -10,7 +10,7 @@ from pathlib import Path
 import copier
 import rich_click as click
 
-from bhklab_project_template.logging_config import configure_logging
+from bhklab_project_template.logging_config import configure_logging, logger
 from bhklab_project_template.utils import check_all_requirements
 
 DEFAULT_TEMPLATE = "gh:bhklab/bhklab-project-template"
@@ -48,6 +48,9 @@ def cli(
     """
     # Configure logging based on debug flag
     configure_logging(debug=debug)
+
+    # debug log that a new project is being created
+    logger.debug(f"Creating new project at {destination}")
 
     # Check all requirements before running the template
     check_all_requirements()
