@@ -32,6 +32,8 @@ jobs:
 
         steps:
             - uses: actions/checkout@v4
+              with:
+                    fetch-depth: 0  # Fetch all history for all branches and tags
 
             - name: Install Pixi
               uses: prefix-dev/setup-pixi@v0.8.3
@@ -54,17 +56,16 @@ jobs:
                   PYPI_USERNAME: __token__
                   PYPI_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
 
+            - name: Update lockfile
+              run: |
+                    pixi lock
+                    git config --global user.email "github-actions[bot]@users.noreply.github.com"
+                    git config --global user.name "github-actions[bot]"
+                    git add pixi.lock
+                    git commit -m "chore: Update pixi.lock" || echo "no changes"
+                    git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+                    git push origin main
 
             - name: Deploy documentation
               run: |
                   pixi run --environment docs mkdocs gh-deploy
-
-            - name: Update lockfile
-              run: |
-                  pixi lock
-                  git config --global user.email "github-actions[bot]@users.noreply.github.com"
-                  git config --global user.name "github-actions[bot]"
-                  git add pixi.lock
-                  git commit -m "chore: Update pixi.lock" || echo "no changes"
-                  git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
-                  git push origin main
