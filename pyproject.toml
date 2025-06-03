@@ -1,6 +1,6 @@
 [project]
 name = "bhklab-project-template"
-version = "0.10.0"
+version = "0.11.0"
 description = "A simple CLI tool to create new BHKLab projects from a template"
 authors = [{ name = "Jermiah Joseph", email = "jermiahjoseph98@gmail.com" }]
 maintainers = [
