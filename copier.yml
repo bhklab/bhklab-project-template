@@ -74,6 +74,11 @@ project_description:
     type: str
     help: A short description of your {{ project_name }} project.
     placeholder: "{{ project_name }} is a project that does XYZ"
+    # description cannot have any newline characters or it will break in the toml file
+    validator: >-
+        {% if project_description | regex_search('[\r\n]') %}
+        {{ "Project description cannot contain newlines." }}
+        {% endif %}
 
 python_version:
     type: str
