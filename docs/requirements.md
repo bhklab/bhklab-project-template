@@ -5,6 +5,12 @@ This document outlines the necessary prerequisites for using the BHKLab Project 
 
 ## System Requirements
 
+| Section                                                      | Description                |
+|--------------------------------------------------------------|----------------------------|
+| [1. Git Version Requirements](#1-git-version-requirements)   | Git v2.28+ installation    |
+| [2. Pixi Tool Requirements](#2-pixi-tool-requirements)       | Pixi package manager setup |
+| [3. GitHub CLI Authentication](#3-github-cli-authentication) | GitHub CLI auth setup      |
+
 ### 1. Git Version Requirements
 
 You must have Git version 2.28 or higher installed on your system. This is because our template uses
