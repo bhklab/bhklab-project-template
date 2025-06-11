@@ -21,7 +21,9 @@ jobs:
               uses: actions/checkout@v3
               with:
                   fetch-depth: 0
-
+            # TODO:: this whole markdown that gets generated is verbose to have in this github action
+            # We should consider moving this to a jinja template that gets rendered
+            # with variables passed in from the action
             - name: Check for data files in protected directories
               id: data-check
               run: |
@@ -73,6 +75,9 @@ jobs:
                     echo "3. Document data sources in docs/data_sources.md" >> data_audit.md
                     echo "" >> data_audit.md
                     echo "**Remember:** Data files should never be committed to Git. See the README files in data directories for proper data management guidelines." >> data_audit.md
+                    echo "" >> data_audit.md
+                    echo "For detailed instructions on how to properly ignore data files, visit:" >> data_audit.md
+                    echo "https://bhklab.github.io/bhklab-project-template/gitignore/" >> data_audit.md
                     
                     echo "FOUND_DATA_FILES=true" >> $GITHUB_ENV
                     echo "FOUND_FILE_COUNT=$FOUND_FILES" >> $GITHUB_ENV
