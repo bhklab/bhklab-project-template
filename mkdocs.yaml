@@ -19,12 +19,10 @@ dev_addr: 127.0.0.1:8003
 
 # The layout of the navigation links
 nav:
-  - Home: index.md
-  - Requirements: requirements.md
-  - Usage: usage.md
-  - Status: status.md
-  - Troubleshooting: troubleshooting.md
-  - "Meeting Notes": meeting_notes.md
+    - Home: index.md
+    - Requirements: requirements.md
+    - Usage: usage.md
+    - Troubleshooting: troubleshooting.md
 
 theme: readthedocs
 
