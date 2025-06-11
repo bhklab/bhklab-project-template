@@ -1,6 +1,6 @@
 import subprocess
 from typing import Optional
-
+import re
 from bhklab_project_template.logging_config import configure_logging, logger
 
 # Central constants for version requirements
@@ -31,7 +31,14 @@ def check_git_version() -> None:
             text=True,
             check=True,
         )
-        version_str = result.stdout.strip().split()[-1]
+        output = result.stdout.strip()
+        # Extract version number using regex to handle different formats
+
+        version_match = re.search(r"(\d+\.\d+\.\d+)", output)
+        if not version_match:
+            raise RuntimeError(f"Could not parse git version from output: {output}")
+
+        version_str = version_match.group(1)
         major, minor, _ = map(int, version_str.split("."))
         logger.debug(f"Git version: {version_str}")
         if (major, minor) < MIN_GIT_VERSION:
