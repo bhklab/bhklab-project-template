@@ -61,7 +61,7 @@ pull request to update the version of the `bhklab-project-template` package.
 After 1-3 hours of the `release-please` PR being merged, and the new version
 being available on `PyPi`, the [`conda-forge` feedstock repo](https://github.com/conda-forge/bhklab-project-template-feedstock)
 should have a PR created by the `conda-forge-bot` that updates the version
-(i.e [the v0.11.0 PR](https://github.com/conda-forge/bhklab-project-template-feedstock/pull/4).
+(i.e [the v0.11.0 PR](https://github.com/conda-forge/bhklab-project-template-feedstock/pull/4)).
 
 There maintainers defined in the `recipe.yaml` file, who are responsible for
 reviewing and merging the PR. If you are a maintainer, make sure all the checks
