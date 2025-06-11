@@ -15,17 +15,5 @@ pixi exec bhklab-project-template <PROJECT_NAME>
 pixi exec bhklab-project-template gdcs-drug-combo
 ```
 
-## using `uv`
-
-```console
-uvx bhklab_project_template <PROJECT_NAME>
-```
-
-## using `copier`
-
-```console
-copier copy --trust gh:bhklab/bhklab-project-template <PROJECT_NAME>
-```
-
 - This will create a new directory with the name of your project and copy the
   template files into it.
