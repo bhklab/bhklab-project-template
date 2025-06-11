@@ -22,6 +22,7 @@ nav:
     - Home: index.md
     - Requirements: requirements.md
     - Usage: usage.md
+    - "DMP Directories": dmp_directories.md
     - Troubleshooting: troubleshooting.md
 
 theme: readthedocs
@@ -34,6 +35,10 @@ markdown_extensions:
     - codehilite
     - footnotes
     - tables
+    - pymdownx.details
+    - pymdownx.superfences
+    - pymdownx.tabbed
+    - pymdownx.highlight
 
 extra:
     homepage: https://bhklab.github.io/bhklab-project-template
