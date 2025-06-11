@@ -1,5 +1,25 @@
 # Changelog
 
+## [0.12.0](https://github.com/bhklab/bhklab-project-template/compare/v0.11.0...v0.12.0) (2025-06-11)
+
+
+### Features
+
+* add comprehensive overview of DMP directory structure and usage ([e337f08](https://github.com/bhklab/bhklab-project-template/commit/e337f085a8381c74ab27cea63ac8cc1a1fb24481))
+* add Development section to navigation in mkdocs ([022304c](https://github.com/bhklab/bhklab-project-template/commit/022304c183c7f23731b6f8f6349686ccc9ac2112))
+
+
+### Bug Fixes
+
+* add DMP Directories to navigation and enhance markdown extensions ([1cce292](https://github.com/bhklab/bhklab-project-template/commit/1cce29265264cdb8db6b3c1e1a5493c652428f69))
+* add DMP-compliant directories information to project overview ([e82d83d](https://github.com/bhklab/bhklab-project-template/commit/e82d83d6384aa49566eab72eea144846e2bed52d))
+* adjust fetch depth in checkout step and streamline lockfile update process ([3d73c63](https://github.com/bhklab/bhklab-project-template/commit/3d73c634f02c6df9f1d00eddeba5a5f1cf214672))
+* clarify GitHub Pages setup instructions in troubleshooting guide ([dff6cec](https://github.com/bhklab/bhklab-project-template/commit/dff6ceceb5f1265715c6bd4fc606d60dfa0bb553))
+* remove commands for `uv` and `copier` from usage documentation ([86e29e9](https://github.com/bhklab/bhklab-project-template/commit/86e29e9e1cc854eab5693ede6e0513c231cc8869))
+* remove meeting notes and status documentation from project ([19709d8](https://github.com/bhklab/bhklab-project-template/commit/19709d818a1538dff9ca5b84dd9b4893eb15d091))
+* update mkdocs-material dependency version in pixi.toml ([6fef5ee](https://github.com/bhklab/bhklab-project-template/commit/6fef5ee5978d7d12d59b5013b1bdac078d536101))
+* update requirements table in documentation for clarity ([2164d81](https://github.com/bhklab/bhklab-project-template/commit/2164d81b8603921f16b89ec9a94cb4cdc70beeed))
+
 ## [0.11.0](https://github.com/bhklab/bhklab-project-template/compare/v0.10.0...v0.11.0) (2025-06-03)
 
 
