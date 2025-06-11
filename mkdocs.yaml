@@ -23,6 +23,7 @@ nav:
     - Requirements: requirements.md
     - Usage: usage.md
     - "DMP Directories": dmp_directories.md
+    - "The .gitignore file": gitignore.md
     - Troubleshooting: troubleshooting.md
     - Development: development.md
 
