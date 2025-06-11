@@ -1,5 +1,25 @@
 # Changelog
 
+## [0.13.0](https://github.com/bhklab/bhklab-project-template/compare/v0.12.0...v0.13.0) (2025-06-11)
+
+
+### Features
+
+* enhance CLI command with detailed epilogue for documentation and issue reporting ([f2c9dce](https://github.com/bhklab/bhklab-project-template/commit/f2c9dce623f6d882f6a17aabf21395cf413d6631))
+* expand .gitignore file to include comprehensive entries for OS, Python, R, IDEs, and build artifacts ([1991e2f](https://github.com/bhklab/bhklab-project-template/commit/1991e2f1320e87d1863efe36509d903ecf30da37))
+
+
+### Bug Fixes
+
+* correct markdown syntax in development guide ([f0428b1](https://github.com/bhklab/bhklab-project-template/commit/f0428b10eb11e7ac56dce9d11c0995a4eb0aca47))
+* update rich-click dependency to version 1.8.9 ([cd2fbd7](https://github.com/bhklab/bhklab-project-template/commit/cd2fbd7c16799aa9d3a3278cd7dfb960375dbefc))
+
+
+### Documentation
+
+* add .gitignore file to documentation navigation ([ea690ea](https://github.com/bhklab/bhklab-project-template/commit/ea690eaf447e5cc69bce927c2370cefe9db05e69))
+* enhance development guide with steps for updating package versions in PyPi and conda-forge ([2f068a3](https://github.com/bhklab/bhklab-project-template/commit/2f068a3151ab61daba1b314a7f4b482847f2d08f))
+
 ## [0.12.0](https://github.com/bhklab/bhklab-project-template/compare/v0.11.0...v0.12.0) (2025-06-11)
 
 
