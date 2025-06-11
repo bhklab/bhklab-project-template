@@ -21,7 +21,8 @@ However in case you run into issues, here are some troubleshooting steps.
 !!! warning "Warning"
     Before being able to deploy the documentation, you need to set up GitHub Pages.
     This is a one-time setup for the repository. The documentation will be deployed
-    automatically to GitHub Pages when you push to the `main` branch.
+    automatically to GitHub Pages when you push to the `main` branch (if the
+    GitHub Actions workflow is set up correctly).
     However, you need to create a `gh-pages` branch in your repository.
     You can do this by running the following command:
 
@@ -30,7 +31,7 @@ However in case you run into issues, here are some troubleshooting steps.
         git push origin gh-pages
         ```
 
-    This is only possible after you have created the repository on GitHub.
+    Note: This is only possible after you have created the repository on GitHub.
 
 The template will use mkdocs to build the documentation and deploy it to GitHub Pages.
 To set up GitHub Pages, follow these steps:
