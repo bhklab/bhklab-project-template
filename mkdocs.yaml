@@ -24,6 +24,7 @@ nav:
     - Usage: usage.md
     - "DMP Directories": dmp_directories.md
     - Troubleshooting: troubleshooting.md
+    - Development: development.md
 
 theme: readthedocs
 
