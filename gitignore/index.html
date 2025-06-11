@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Jermiah Joseph" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>The .gitignore file - bhklab-project-template</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "The .gitignore file";
+        var mkdocs_page_input_path = "gitignore.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> bhklab-project-template
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../requirements/">Requirements</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../usage/">Usage</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../dmp_directories/">DMP Directories</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">The .gitignore file</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#what-and-why">What and why?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#whats-inside-the-main-gitignore-file">What's inside the main .gitignore file?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#why-is-this-important">Why is this important?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#customizing-for-your-project">Customizing for your project</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/">Troubleshooting</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../development/">Development</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">bhklab-project-template</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">The .gitignore file</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/bhklab/bhklab-project-template/edit/master/docs/gitignore.md">Edit on bhklab-project-template</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="understanding-the-gitignore-file">Understanding the <code>.gitignore</code> File</h1>
+<h2 id="what-and-why">What and why?</h2>
+<p>The <code>.gitignore</code> file tells Git which files and
+folders to ignore when tracking changes. Think of it as keeping the party clean by
+not letting in the uninvited guests (like temporary files, build artifacts, and
+system-specific files).</p>
+<p>Our template comes with two <code>.gitignore</code> files:</p>
+<ol>
+<li>
+<p>root: <code>TEMPLATE/.gitignore</code></p>
+<p>crafted to work with both Python and R development workflows. It's organized into
+logical sections to make it easy to understand and maintain.</p>
+</li>
+<li>
+<p>data: <code>TEMPLATE/data/.gitignore</code>
+    specifically designed to ignore files in the <code>data</code> directory
+    pre-configured to ignore everything except the <code>README.md</code> files,
+    to prevent users from accidentally rawdata files.</p>
+</li>
+</ol>
+<div class="admonition question">
+<p class="admonition-title">Why shouldn't I commit my data files?</p>
+<details class="answer">
+<summary>Answer</summary>
+<ul>
+<li>
+<p><strong>Large files bloat the repo:</strong> Every clone/download pulls the whole
+history, so a single 500 MB dataset balloons to gigabytes after a few
+updates.</p>
+</li>
+<li>
+<p><strong>Git is text‑oriented:</strong> Binary data can’t be delta‑compressed well, so
+each revision is stored almost in full, slowing every operation.</p>
+</li>
+<li>
+<p><strong>Privacy!:</strong> Patient or proprietary data in a public repo is dangerous
+and can lead to Data Use Agreements being violated.</p>
+</li>
+<li>
+<p><strong>Reproducibility best practice:</strong> Keep code in Git and store immutable
+data elsewhere (e.g. Zenodo, FigShare) so others can fetch the exact
+snapshot you used AND use it across different projects.</p>
+</li>
+<li>
+<p><strong>Backup strategy separation:</strong> Repos are for source; archives belong in
+object storage, not in version control.</p>
+</li>
+<li>
+<p><strong>CI/CD efficiency:</strong> Smaller repositories mean faster pipelines and lower
+bandwidth costs for every contributor.</p>
+</li>
+</ul>
+</details>
+</div>
+<h2 id="whats-inside-the-main-gitignore-file">What's inside the main <code>.gitignore</code> file?</h2>
+<p>The <code>.gitignore</code> file is organized into these major sections:</p>
+<ol>
+<li><strong>Operating System files</strong> - Keeps those pesky <code>.DS_Store</code> files (macOS),
+   Thumbs.db (Windows), and other OS-specific clutter out of your repository</li>
+<li><strong>Python related files</strong> - Ignores bytecode, package builds, and other
+   Python-specific temporary files</li>
+<li><strong>R related files</strong> - Skips R history, session data, and package build files</li>
+<li><strong>IDE/Editor files</strong> - Prevents editor configs from PyCharm, VS Code, and
+   others from being shared</li>
+<li><strong>Dependency Management</strong> - Handles ignoring appropriate files from tools like
+   poetry, pipenv, and pdm</li>
+<li><strong>Build/Test artifacts</strong> - Keeps build directories and test results from
+   cluttering your repo</li>
+<li><strong>Documentation builds</strong> - Ignores generated documentation that should be built
+   on-demand</li>
+<li><strong>Project-specific entries</strong> - A section reserved for your specific project needs</li>
+</ol>
+<h2 id="why-is-this-important">Why is this important?</h2>
+<p>A well-configured <code>.gitignore</code> file:</p>
+<ul>
+<li><strong>Keeps your repository clean</strong> - No more accidental commits of temporary files</li>
+<li><strong>Reduces conflicts</strong> - Prevents system-specific files from causing merge headaches</li>
+<li><strong>Improves performance</strong> - Git works faster when it doesn't have to track
+  thousands of irrelevant files</li>
+<li><strong>Maintains security</strong> - Prevents accidental commits of sensitive information
+  (like environment files)</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you find yourself repeatedly using <code>git add -f</code> to force-add ignored files,
+that might be a sign you need to adjust your <code>.gitignore</code> file.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Handle with care</p>
+<p>The <code>.gitignore</code> file in this template has been carefully optimized for data
+science projects using Python and R. <strong>Modify it only if you know what you're
+doing!</strong></p>
+<p>Removing patterns can lead to system files, caches, or even sensitive information
+being accidentally committed to your repository.</p>
+</div>
+<h2 id="customizing-for-your-project">Customizing for your project</h2>
+<p>Need to add project-specific patterns? Look for the "PROJECT-SPECIFIC ENTRIES"
+section at the end of the file:</p>
+<div class="codehilite"><pre><span></span><code>#############################################################################
+#<span class="w"> </span><span class="mi">8</span>.<span class="w"> </span><span class="nv">PROJECT</span><span class="o">-</span><span class="nv">SPECIFIC</span><span class="w"> </span><span class="nv">ENTRIES</span>
+#############################################################################
+
+#<span class="w"> </span><span class="nv">Add</span><span class="w"> </span><span class="nv">your</span><span class="w"> </span><span class="nv">project</span><span class="o">-</span><span class="nv">specific</span><span class="w"> </span><span class="nv">entries</span><span class="w"> </span><span class="nv">here</span>
+#<span class="w"> </span><span class="k">For</span><span class="w"> </span><span class="nv">example</span>:
+#<span class="w"> </span><span class="nv">models</span><span class="o">/</span>
+#<span class="w"> </span><span class="nv">sandbox</span><span class="o">/</span>
+#<span class="w"> </span><span class="nv">etc</span>.
+</code></pre></div>
+
+<p>This is where you can safely add patterns specific to your project without
+disrupting the carefully balanced patterns above.</p>
+<div class="admonition example">
+<p class="admonition-title">Common additions</p>
+<p>You might want to add patterns for:</p>
+<ul>
+<li>Large data files (<code>sandbox/</code> directory if you use it)</li>
+<li>Model checkpoints or weights (<code>.h5</code>, <code>.pkl</code>)</li>
+<li>Generated figures or outputs</li>
+<li>Environment-specific configuration files (<code>.env</code>, <code>.local</code>)</li>
+<li>Temporary directories (<code>temp/</code>, <code>cache/</code>)</li>
+</ul>
+</div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../dmp_directories/" class="btn btn-neutral float-left" title="DMP Directories"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../troubleshooting/" class="btn btn-neutral float-right" title="Troubleshooting">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/bhklab/bhklab-project-template" class="fa fa-code-fork" style="color: #fcfcfc"> bhklab-project-template</a>
+        </span>
+    
+    
+      <span><a href="../dmp_directories/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../troubleshooting/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
