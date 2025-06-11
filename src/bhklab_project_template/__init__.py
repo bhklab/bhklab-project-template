@@ -15,11 +15,27 @@ from bhklab_project_template.utils import check_all_requirements
 
 DEFAULT_TEMPLATE = "gh:bhklab/bhklab-project-template"
 
+DOCS_URL = "https://bhklab.github.io/bhklab-project-template/"
+ISSUES_URL = "https://github.com/bhklab/bhklab-project-template/issues"
 
-@click.command()
+EPILOGUE = f"""
+For more information, visit: {DOCS_URL}
+
+If you encounter any issues: {ISSUES_URL}
+"""
+
+
+@click.command(
+    short_help="Create a new BHKLab project from a template.",
+    context_settings={
+        "help_option_names": ["-h", "--help"],
+    },
+    epilog=EPILOGUE,
+    no_args_is_help=True,
+)
 @click.argument(
     "DESTINATION",
-    required=True,
+    required=False,
     type=click.Path(
         exists=False,
         file_okay=False,
