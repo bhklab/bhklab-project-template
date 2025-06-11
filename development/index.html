@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Jermiah Joseph" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Meeting Notes - bhklab-project-template</title>
+    <title>Development - bhklab-project-template</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Meeting Notes";
-        var mkdocs_page_input_path = "meeting_notes.md";
+        var mkdocs_page_name = "Development";
+        var mkdocs_page_input_path = "development.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -52,7 +52,7 @@
                 </li>
               </ul>
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../status/">Status</a>
+                <li class="toctree-l1"><a class="reference internal" href="../dmp_directories/">DMP Directories</a>
                 </li>
               </ul>
               <ul>
@@ -60,9 +60,13 @@
                 </li>
               </ul>
               <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="#">Meeting Notes</a>
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Development</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#latest-meeting-notes-apr-25-2025">Latest Meeting Notes (Apr 25, 2025)</a>
+    <li class="toctree-l2"><a class="reference internal" href="#how-projects-are-created-from-templates">How projects are created from templates</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#contributing-to-the-project-template">Contributing to the project template</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#contributing-damply-and-the-damplydirs-utility">Contributing damply and the DamplyDirs utility</a>
     </li>
     </ul>
                 </li>
@@ -81,9 +85,9 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">Meeting Notes</li>
+      <li class="breadcrumb-item active">Development</li>
     <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/bhklab/bhklab-project-template/edit/master/docs/meeting_notes.md">Edit on bhklab-project-template</a>
+          <a href="https://github.com/bhklab/bhklab-project-template/edit/master/docs/development.md">Edit on bhklab-project-template</a>
     </li>
   </ul>
   <hr/>
@@ -91,35 +95,44 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="meeting-agenda-and-action-items">Meeting Agenda and Action Items</h1>
-<p><a href="https://docs.google.com/document/d/1Gj4BFFmzT4vQIFH8nRNhtGOJfGi515bs847rXFNPn_8/edit?tab=t.0">google doc to meeting notes</a></p>
-<h2 id="latest-meeting-notes-apr-25-2025">Latest Meeting Notes (Apr 25, 2025)</h2>
-<p><strong>Template Ideas:</strong></p>
-<ul>
-<li>Simple/Project structure with pixi, mkdocs, basic DMP folder setup</li>
-<li>Package development templates for R and Python with project toml, ruff, CodeRabbit, Code coverage</li>
-</ul>
-<p><strong>MkDocs Components:</strong></p>
-<ul>
-<li>Home</li>
-<li>How to run code</li>
-<li>Where to get data</li>
-<li>Working notes</li>
-<li>Documenting symbolic links</li>
-</ul>
-<p><strong>GitHub Actions:</strong></p>
-<ul>
-<li>Check for presence of rawdata, procdata, results directories</li>
-<li>Documentation audits</li>
-<li>Optional CodeRabbit integration</li>
-</ul>
-<p><strong>Action Items:</strong></p>
-<ul>
-<li>Complete initial template structure ✓</li>
-<li>Document DMP best practices ✓</li>
-<li>Setup GitHub Actions workflows 🚧</li>
-<li>Test with real projects 🚧</li>
-</ul>
+                <h1 id="development-contribution-guide">Development &amp; Contribution Guide</h1>
+<p>This project uses the <a href="https://copier.readthedocs.io">copier tool</a>. If you want
+to contribute to the project template, please take the time to read the copier
+documentation on how projects are configured and how to use it.</p>
+<h2 id="how-projects-are-created-from-templates">How projects are created from templates</h2>
+<p>For the <code>bhklab-project-template</code>, the project is created not by using
+the <code>copier</code> command directly, but rather via the the python API that is
+exposed by the <code>copier</code> package. This is done to allow for more flexibility
+and customization of the project creation process.</p>
+<p>You can find the code that creates the project in the
+<a href="https://github.com/bhklab/bhklab-project-template/blob/main/src/bhklab_project_template/__init__.py"><code>src/bhklab_project_template/__init__.py</code></a>. We wrap the API in a <a href="https://click.palletsprojects.com/en/stable/"><code>click</code></a>
+command line interface.</p>
+<p>I chose this route to make it <strong><em>super simple</em></strong> to get started and to remove
+the friction in the experience of creating a new project.</p>
+<h2 id="contributing-to-the-project-template">Contributing to the project template</h2>
+<p>The project template is made up of the following:</p>
+<ol>
+<li>the <a href="https://github.com/bhklab/bhklab-project-template/blob/main/copier.yml"><code>copier.yml</code></a>
+  which defines the questions to ask when creating a new project, and saves
+  the answers to be used by <code>copier</code> to fill in the template files.</li>
+<li>the <a href="https://github.com/bhklab/bhklab-project-template/tree/main/TEMPLATE"><code>TEMPLATE</code></a>
+    directory which contains the files that will be copied to the new project.
+    The files in this directory are templated using the
+    <a href="https://jinja.palletsprojects.com/en/3.0.x/">Jinja2</a> templating engine
+    and the answers provided in the <code>copier.yml</code> file.</li>
+<li>the <a href="https://github.com/bhklab/bhklab-project-template/tree/main/src/bhklab_project_template"><code>src/bhklab_project_template</code></a> directory which contains the code that implements the project template.</li>
+<li>the <a href="https://github.com/bhklab/bhklab-project-template/blob/main/copier-settings.yml"><code>copier-settings.yml</code></a>
+    which is just an extension of the <code>copier.yml</code> file via the <a href="https://copier.readthedocs.io/en/stable/configuring/#include-other-yaml-files"><code>include</code> feature</a> of <code>copier</code>.
+    This file defines some constant variables used in the workflow, and more
+    importantly, it defines the <a href="https://copier.readthedocs.io/en/stable/configuring/#tasks"><code>copier</code> tasks</a>
+    that are run after the project is created.</li>
+</ol>
+<h2 id="contributing-damply-and-the-damplydirs-utility">Contributing <code>damply</code> and the <code>DamplyDirs</code> utility</h2>
+<p>The <code>DamplyDirs</code> utility is provided via the <code>damply</code> package, and is already
+included in the <a href="https://github.com/bhklab/bhklab-project-template/blob/main/TEMPLATE/pixi.toml.jinja">project template's <code>pixi.toml</code> file</a></p>
+<p>If there are any issues or features that you would like to see in the
+<code>damply</code> package, please open an issue or a pull request in the
+<a href="https://github.com/bhklab/damply"><code>bhklab/damply</code> repository</a></p>
               
             </div>
           </div><footer>

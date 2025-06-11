@@ -78,7 +78,7 @@
                 </li>
               </ul>
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../status/">Status</a>
+                <li class="toctree-l1"><a class="reference internal" href="../dmp_directories/">DMP Directories</a>
                 </li>
               </ul>
               <ul>
@@ -86,7 +86,7 @@
                 </li>
               </ul>
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../meeting_notes/">Meeting Notes</a>
+                <li class="toctree-l1"><a class="reference internal" href="../development/">Development</a>
                 </li>
               </ul>
       </div>
@@ -116,13 +116,34 @@
                 <h1 id="project-requirements">Project Requirements</h1>
 <p>This document outlines the necessary prerequisites for using the BHKLab Project Template.</p>
 <h2 id="system-requirements">System Requirements</h2>
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#1-git-version-requirements">1. Git Version Requirements</a></td>
+<td>Git v2.28+ installation</td>
+</tr>
+<tr>
+<td><a href="#2-pixi-tool-requirements">2. Pixi Tool Requirements</a></td>
+<td>Pixi package manager setup</td>
+</tr>
+<tr>
+<td><a href="#3-github-cli-authentication">3. GitHub CLI Authentication</a></td>
+<td>GitHub CLI auth setup</td>
+</tr>
+</tbody>
+</table>
 <h3 id="1-git-version-requirements">1. Git Version Requirements</h3>
 <p>You must have Git version 2.28 or higher installed on your system. This is because our template uses
 the <code>--initial-branch</code> option in the <code>git init</code> command.</p>
 <p>To check your Git version:</p>
-<div class="codehilite"><pre><span></span><code><span class="go">git --version</span>
+<div class="highlight"><pre><span></span><code><span class="go">git --version</span>
 </code></pre></div>
-
 <p>If your Git version is below 2.28, please update it following instructions for your operating system.</p>
 <h3 id="2-pixi-tool-requirements">2. Pixi Tool Requirements</h3>
 <p><strong>Pixi</strong> is our preferred package manager and environment manager for this project.</p>
@@ -134,7 +155,7 @@ the <code>--initial-branch</code> option in the <code>git init</code> command.</
 </ol>
 <h4 id="22-verifying-installation">2.2 Verifying Installation</h4>
 <p>After installation, run the following commands to verify that Pixi is properly installed:</p>
-<div class="codehilite"><pre><span></span><code><span class="gp"># </span>Check<span class="w"> </span>pixi<span class="w"> </span>version
+<div class="highlight"><pre><span></span><code><span class="gp"># </span>Check<span class="w"> </span>pixi<span class="w"> </span>version
 <span class="go">pixi --version</span>
 
 <span class="gp"># </span>Verify<span class="w"> </span>GitHub<span class="w"> </span>CLI<span class="w"> </span>is<span class="w"> </span>accessible<span class="w"> </span>through<span class="w"> </span>pixi
@@ -143,21 +164,18 @@ the <code>--initial-branch</code> option in the <code>git init</code> command.</
 <span class="gp"># </span>Verify<span class="w"> </span>our<span class="w"> </span>project<span class="w"> </span>template<span class="w"> </span>tool<span class="w"> </span>is<span class="w"> </span>accessible
 <span class="go">pixi exec bhklab-project-template --help</span>
 </code></pre></div>
-
 <p>If any of these commands fail, please reinstall Pixi or make sure it's properly added to your PATH.</p>
 <h3 id="3-github-cli-authentication">3. GitHub CLI Authentication</h3>
 <p>Our template interacts with GitHub APIs through the GitHub CLI tool (<code>gh</code>), which requires
 authentication.</p>
 <h4 id="31-logging-into-github-cli">3.1 Logging into GitHub CLI</h4>
 <p>Run the following command and follow the prompts to authenticate:</p>
-<div class="codehilite"><pre><span></span><code><span class="go">pixi exec gh auth login --hostname &#39;github.com&#39; --git-protocol https</span>
+<div class="highlight"><pre><span></span><code><span class="go">pixi exec gh auth login --hostname &#39;github.com&#39; --git-protocol https</span>
 </code></pre></div>
-
 <h4 id="32-verifying-authentication">3.2 Verifying Authentication</h4>
 <p>To verify you're properly authenticated:</p>
-<div class="codehilite"><pre><span></span><code><span class="go">pixi exec gh auth status</span>
+<div class="highlight"><pre><span></span><code><span class="go">pixi exec gh auth status</span>
 </code></pre></div>
-
 <p>This should show that you're logged in to GitHub.</p>
 <div class="admonition warning">
 <p class="admonition-title">Organization Access</p>

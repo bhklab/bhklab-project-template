@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Jermiah Joseph" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>DMP Directories - bhklab-project-template</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "DMP Directories";
+        var mkdocs_page_input_path = "dmp_directories.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> bhklab-project-template
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../requirements/">Requirements</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../usage/">Usage</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">DMP Directories</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#dmp-directory-structure">DMP Directory Structure</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#damplydirs-overview">DamplyDirs Overview</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#example-usage">Example Usage</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/">Troubleshooting</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../development/">Development</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">bhklab-project-template</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">DMP Directories</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/bhklab/bhklab-project-template/edit/master/docs/dmp_directories.md">Edit on bhklab-project-template</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="working-with-dmp-directories">Working with DMP Directories</h1>
+<p>Over the years, we have developed a standardized directory structure via the
+data management plan (DMP) in our projects. This structure is designed to:</p>
+<ul>
+<li>Facilitate reproducible research</li>
+<li>Provide a clear organization for data, code, and documentation</li>
+<li>Support collaboration and data sharing</li>
+<li>Promote familiarity and ease of use across projects</li>
+</ul>
+<div class="admonition danger">
+<p class="admonition-title">Understanding DMP Directories is <em>mandatory</em> in the BHKLab</p>
+<p>This page is just a brief overview of the DMP directory structure.
+For a comprehensive overview, please take the time to read and
+understand the <a href="https://bhklab.github.io/damply/">damply documentation</a>.</p>
+</div>
+<p>The standardized DMP directory structure is implemented via the
+<a href="https://github.com/bhklab/damply"><code>damply</code></a> package, which provides tools and
+conventions for organizing project files in accordance with DMP guidelines.</p>
+<div class="admonition question">
+<p class="admonition-title">DMP reproducibility litmus test</p>
+<p>If you are unsure whether your project is DMP-reproducible, ask yourself the
+following questions:</p>
+<ul>
+<li>If I had no prior knowledge of the data used in this project,
+  does the documentation provide enough information to understand
+  the data, its sources, and how to obtain it?</li>
+<li>If I were a new collaborator, would I be able to understand the code
+  and documentation I need to understand and reproduce the project?</li>
+<li>If I were to delete all the <code>procdata</code> and <code>results</code> directories,
+  could I reproduce the results with just the <code>rawdata</code> and workflow content?</li>
+</ul>
+</div>
+<h2 id="dmp-directory-structure">DMP Directory Structure</h2>
+<p>As of writing, the recommended directory structure is as follows:</p>
+<div class="highlight"><pre><span></span><code><span class="go">project_root/</span>
+<span class="go">├── config/         # Configuration files</span>
+<span class="go">├── data/           # All data in one parent directory</span>
+<span class="go">│   ├── procdata/   # Processed/intermediate data</span>
+<span class="go">│   ├── rawdata/    # Raw input data</span>
+<span class="go">│   └── results/    # Analysis outputs</span>
+<span class="go">├── logs/           # Log files</span>
+<span class="go">├── metadata/       # Dataset descriptions</span>
+<span class="go">└── workflow/       # Code organization</span>
+<span class="go">    ├── notebooks/  # Jupyter notebooks</span>
+<span class="go">    └── scripts/    # Analysis scripts</span>
+</code></pre></div>
+<h3 id="damplydirs-overview"><code>DamplyDirs</code> Overview</h3>
+<p>Assuming the above directory structure, the <code>damply</code> package provides a
+simple way to access these directories via the <code>DamplyDirs</code> class.</p>
+<p>This class takes advantage of the following environment variables that are
+defined in the template's <code>pixi.toml</code> file:</p>
+<div class="highlight"><pre><span></span><code><span class="k">[activation]</span>
+<span class="c1"># convenient variables which can be used in scripts</span>
+<span class="n">env</span><span class="p">.</span><span class="n">CONFIG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${PIXI_PROJECT_ROOT}/config&quot;</span>
+<span class="n">env</span><span class="p">.</span><span class="n">METADATA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${PIXI_PROJECT_ROOT}/metadata&quot;</span>
+<span class="n">env</span><span class="p">.</span><span class="n">LOGS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${PIXI_PROJECT_ROOT}/logs&quot;</span>
+<span class="n">env</span><span class="p">.</span><span class="n">RAWDATA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${PIXI_PROJECT_ROOT}/data/rawdata&quot;</span>
+<span class="n">env</span><span class="p">.</span><span class="n">PROCDATA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${PIXI_PROJECT_ROOT}/data/procdata&quot;</span>
+<span class="n">env</span><span class="p">.</span><span class="n">RESULTS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${PIXI_PROJECT_ROOT}/data/results&quot;</span>
+<span class="n">env</span><span class="p">.</span><span class="n">SCRIPTS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;${PIXI_PROJECT_ROOT}/workflow/scripts&quot;</span>
+</code></pre></div>
+<p>This allows you to programmatically access the directories in your project
+without hardcoding paths, making your code more portable and easier to
+maintain.</p>
+<h3 id="example-usage">Example Usage</h3>
+<p>Here is an example of how to use the <code>DamplyDirs</code> class in your project:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">damply</span><span class="w"> </span><span class="kn">import</span> <span class="n">dirs</span>
+
+<span class="n">fastq_file</span> <span class="o">=</span> <span class="n">dirs</span><span class="o">.</span><span class="n">RAWDATA</span> <span class="o">/</span> <span class="s2">&quot;fastq&quot;</span> <span class="o">/</span> <span class="s2">&quot;sample_1.fq.gz&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Processing FASTQ file: </span><span class="si">{</span><span class="n">fastq_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="c1"># Processing FASTQ file: /home/bhkuser/proejcts/data/rawdata/fastq/sample_1.fq.gz</span>
+</code></pre></div>
+<p>A full comprehensive walkthrough of the <code>DamplyDirs</code> utility can be found in the
+<a href="https://bhklab.github.io/damply/dmpdirs/">damply documentation</a>.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../usage/" class="btn btn-neutral float-left" title="Usage"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../troubleshooting/" class="btn btn-neutral float-right" title="Troubleshooting">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/bhklab/bhklab-project-template" class="fa fa-code-fork" style="color: #fcfcfc"> bhklab-project-template</a>
+        </span>
+    
+    
+      <span><a href="../usage/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../troubleshooting/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
