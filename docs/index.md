@@ -7,6 +7,7 @@ The BHKLab project template aims to provide:
 - Simple project setup with pixi, mkdocs, and basic DMP folder structure
 - Support for reproducible research with proper documentation
 - GitHub integrations and standardized workflow
+- Pre-configured `DMP-compliant` directories via [`damply`](https://github.com/bhklab/damply)
 
 ## How this works
 
