@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.14.1](https://github.com/bhklab/bhklab-project-template/compare/v0.14.0...v0.14.1) (2025-06-13)
+
+
+### Bug Fixes
+
+* move readme into docs dir to simplify index ([#41](https://github.com/bhklab/bhklab-project-template/issues/41)) ([a3d7fa2](https://github.com/bhklab/bhklab-project-template/commit/a3d7fa2ed1eaec2c5b34602971c5bc12f31d9fa1))
+
 ## [0.14.0](https://github.com/bhklab/bhklab-project-template/compare/v0.13.0...v0.14.0) (2025-06-11)
 
 
