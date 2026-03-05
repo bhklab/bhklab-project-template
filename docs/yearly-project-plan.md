@@ -75,7 +75,7 @@ Add/remove rows depending on the project.
 
 ---
 
-## 5. Monthly Check-Ins (For 1-1s)
+## 5. Monthly Check-Ins
 
 Use this section every month to track concrete progress.
 
