@@ -51,7 +51,7 @@ jobs:
                   pixi run --environment publish build
 
             - name: Publish distribution to PyPI
-              uses: pypa/gh-action-pypi-publish@release/v1
+              uses: pypa/gh-action-pypi-publish@v1.14.2
               env:
                   PYPI_USERNAME: __token__
                   PYPI_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}

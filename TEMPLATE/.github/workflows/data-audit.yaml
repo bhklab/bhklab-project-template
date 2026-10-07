@@ -18,7 +18,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout repository
-              uses: actions/checkout@v3
+              uses: actions/checkout@v7.0.1
               with:
                   fetch-depth: 0
             # TODO:: this whole markdown that gets generated is verbose to have in this github action
@@ -91,7 +91,7 @@ jobs:
             # If this is a pull request and we found data files, comment on the PR
             - name: Comment on Pull Request
               if: github.event_name == 'pull_request' && env.FOUND_DATA_FILES == 'true'
-              uses: actions/github-script@v6
+              uses: actions/github-script@v9.0.0
               with:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
                   script: |
@@ -108,7 +108,7 @@ jobs:
             # If this is a push to main and we found data files, create an issue
             - name: Create Issue for Data Files
               if: github.event_name == 'push' && github.ref == 'refs/heads/main' && env.FOUND_DATA_FILES == 'true'
-              uses: actions/github-script@v6
+              uses: actions/github-script@v9.0.0
               with:
                   github-token: ${{ secrets.GITHUB_TOKEN }}
                   script: |
