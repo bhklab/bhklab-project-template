@@ -34,30 +34,34 @@ jobs:
                   FOUND_FILES=0
 
                   # Create a detailed markdown report
-                  echo "# Data Directory Audit Report" > data_audit.md
-                  echo "" >> data_audit.md
-                  echo "⚠️ Data files have been detected in protected directories that should not be committed to Git. ⚠️" >> data_audit.md
-                  echo "" >> data_audit.md
-                  echo "## Detected Files" >> data_audit.md
-                  echo "" >> data_audit.md
+                  {
+                    echo "# Data Directory Audit Report"
+                    echo ""
+                    echo "⚠️ Data files have been detected in protected directories that should not be committed to Git. ⚠️"
+                    echo ""
+                    echo "## Detected Files"
+                    echo ""
+                  } > data_audit.md
 
                   for DIR in "${PROTECTED_DIRS[@]}"; do
                     # Check if the directory exists
                     if [ -d "$DIR" ]; then
                       # Get a list of all files in the directory, excluding README.md and .gitignore
                       FILE_LIST=$(find "$DIR" -type f -not -name "README.md" -not -name ".gitignore")
-                      FILE_COUNT=$(echo "$FILE_LIST" | grep -v "^$" | wc -l)
+                      FILE_COUNT=$(echo "$FILE_LIST" | grep -c -v "^$" || true)
                       
                       if [ "$FILE_COUNT" -gt 0 ]; then
                         echo "::warning::Found $FILE_COUNT files in $DIR directory!"
-                        echo "### $DIR" >> data_audit.md
-                        echo "" >> data_audit.md
-                        echo "Found $FILE_COUNT file(s):" >> data_audit.md
-                        echo "" >> data_audit.md
-                        echo '```' >> data_audit.md
-                        echo "$FILE_LIST" >> data_audit.md
-                        echo '```' >> data_audit.md
-                        echo "" >> data_audit.md
+                        {
+                          echo "### $DIR"
+                          echo ""
+                          echo "Found $FILE_COUNT file(s):"
+                          echo ""
+                          echo '```'
+                          echo "$FILE_LIST"
+                          echo '```'
+                          echo ""
+                        } >> data_audit.md
                         FOUND_FILES=$((FOUND_FILES + FILE_COUNT))
                       else
                         echo "✅ No data files found in $DIR"
@@ -68,24 +72,28 @@ jobs:
                   done
 
                   if [ "$FOUND_FILES" -gt 0 ]; then
-                    echo "## Recommended Actions" >> data_audit.md
-                    echo "" >> data_audit.md
-                    echo "1. Remove these files from the repository using git commands" >> data_audit.md
-                    echo "2. Add them to your .gitignore file" >> data_audit.md
-                    echo "3. Document data sources in docs/data_sources.md" >> data_audit.md
-                    echo "" >> data_audit.md
-                    echo "**Remember:** Data files should never be committed to Git. See the README files in data directories for proper data management guidelines." >> data_audit.md
-                    echo "" >> data_audit.md
-                    echo "For detailed instructions on how to properly ignore data files, visit:" >> data_audit.md
-                    echo "https://bhklab.github.io/bhklab-project-template/gitignore/" >> data_audit.md
+                    {
+                      echo "## Recommended Actions"
+                      echo ""
+                      echo "1. Remove these files from the repository using git commands"
+                      echo "2. Add them to your .gitignore file"
+                      echo "3. Document data sources in docs/data_sources.md"
+                      echo ""
+                      echo "**Remember:** Data files should never be committed to Git. See the README files in data directories for proper data management guidelines."
+                      echo ""
+                      echo "For detailed instructions on how to properly ignore data files, visit:"
+                      echo "https://bhklab.github.io/bhklab-project-template/gitignore/"
+                    } >> data_audit.md
                     
-                    echo "FOUND_DATA_FILES=true" >> $GITHUB_ENV
-                    echo "FOUND_FILE_COUNT=$FOUND_FILES" >> $GITHUB_ENV
+                    {
+                      echo "FOUND_DATA_FILES=true"
+                      echo "FOUND_FILE_COUNT=$FOUND_FILES"
+                    } >> "$GITHUB_ENV"
                     echo "::error::Found $FOUND_FILES total files in protected data directories!"
                     cat data_audit.md
                   else
                     echo "✅ All protected data directories are clean (only contain README.md and .gitignore files)"
-                    echo "FOUND_DATA_FILES=false" >> $GITHUB_ENV
+                    echo "FOUND_DATA_FILES=false" >> "$GITHUB_ENV"
                   fi
 
             # If this is a pull request and we found data files, comment on the PR
