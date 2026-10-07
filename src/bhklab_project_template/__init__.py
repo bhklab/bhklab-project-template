@@ -3,7 +3,7 @@
 A Python package that creates new BHKLab projects from a template.
 """
 
-__version__ = "0.14.1"
+__version__ = "0.14.3"
 
 from pathlib import Path
 
