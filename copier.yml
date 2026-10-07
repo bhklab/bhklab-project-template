@@ -93,5 +93,5 @@ python_version:
 publish_to_github:
     type: bool
     help: Would you like to publish this project to GitHub now after generation?
-        (can be down manually later)
+        (can be done manually later)
     default: false
