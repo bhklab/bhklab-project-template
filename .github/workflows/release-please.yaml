@@ -20,7 +20,7 @@ jobs:
             group: ${{ github.workflow }}-${{ github.ref }}
 
         steps:
-            - uses: GoogleCloudPlatform/release-please-action@v4
+            - uses: googleapis/release-please-action@v5.0.0
               id: release
               with:
                   release-type: python
@@ -31,17 +31,17 @@ jobs:
         if: ${{ needs.release-please.outputs.release_created }}
 
         steps:
-            - uses: actions/checkout@v4
+            - uses: actions/checkout@v7.0.1
               with:
                     fetch-depth: 0  # Fetch all history for all branches and tags
 
             - name: Install Pixi
-              uses: prefix-dev/setup-pixi@v0.8.3
+              uses: prefix-dev/setup-pixi@v0.11.0
               with:
                   environments: >-
                       publish
                       docs
-                  pixi-version: v0.46.0
+                  pixi-version: v0.81.0
                   locked: false
 
             - name:
@@ -51,7 +51,7 @@ jobs:
                   pixi run --environment publish build
 
             - name: Publish distribution to PyPI
-              uses: pypa/gh-action-pypi-publish@release/v1
+              uses: pypa/gh-action-pypi-publish@v1.14.2
               env:
                   PYPI_USERNAME: __token__
                   PYPI_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
