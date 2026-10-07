@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.14.3](https://github.com/bhklab/bhklab-project-template/compare/0.14.2...v0.14.3) (2026-10-07)
+
+
+### Bug Fixes
+
+* bump actions versions to latest ([c43be11](https://github.com/bhklab/bhklab-project-template/commit/c43be11c485cd50e1d1eb2fdf6b86809b87bf16e))
+* bump remaining actions to latest versions ([5eba69c](https://github.com/bhklab/bhklab-project-template/commit/5eba69ceb89a0b0368de6d1c2bb5764909f9d7fa))
+* resolve actionlint shell warnings ([b2b3db6](https://github.com/bhklab/bhklab-project-template/commit/b2b3db60c27ece63577b7e0373b5c2cad5e75cb9))
+* small typo ([4c9474b](https://github.com/bhklab/bhklab-project-template/commit/4c9474b07abe0db90a55e94df16b90ad41700146))
+* typos ([3f5ec41](https://github.com/bhklab/bhklab-project-template/commit/3f5ec41b20d93d8bdace00850e052ba068d6dad7))
+* update actions workflows ([407ebcf](https://github.com/bhklab/bhklab-project-template/commit/407ebcf51a85bbb73b664cbf622af2440d014ebb))
+* update release workflow actions ([77310e2](https://github.com/bhklab/bhklab-project-template/commit/77310e27ffa71a1faeba986b9c5471dc8d15f721))
+
+
+### Documentation
+
+* fix typos ([387b527](https://github.com/bhklab/bhklab-project-template/commit/387b5278622c1320335c5e9c745ebad34c4b5a97))
+
 ## [0.14.1](https://github.com/bhklab/bhklab-project-template/compare/v0.14.0...v0.14.1) (2025-06-13)
 
 
