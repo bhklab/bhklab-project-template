@@ -83,7 +83,7 @@ from damply import dirs
 
 fastq_file = dirs.RAWDATA / "fastq" / "sample_1.fq.gz"
 print(f"Processing FASTQ file: {fastq_file}")
-# Processing FASTQ file: /home/bhkuser/proejcts/data/rawdata/fastq/sample_1.fq.gz
+# Processing FASTQ file: /home/bhkuser/projects/data/rawdata/fastq/sample_1.fq.gz
 ```
 
 A full comprehensive walkthrough of the `DamplyDirs` utility can be found in the

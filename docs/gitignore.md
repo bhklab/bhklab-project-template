@@ -17,7 +17,7 @@ Our template comes with two `.gitignore` files:
 2. data: `TEMPLATE/data/.gitignore`
     specifically designed to ignore files in the `data` directory
     pre-configured to ignore everything except the `README.md` files,
-    to prevent users from accidentally rawdata files.
+    to prevent users from accidentally committing rawdata files.
 
 !!! question "Why shouldn't I commit my data files?"
 
