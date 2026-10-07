@@ -7,7 +7,7 @@ documentation on how projects are configured and how to use it.
 ## How projects are created from templates
 
 For the `bhklab-project-template`, the project is created not by using
-the `copier` command directly, but rather via the the python API that is
+the `copier` command directly, but rather via the python API that is
 exposed by the `copier` package. This is done to allow for more flexibility
 and customization of the project creation process.
 
@@ -63,7 +63,7 @@ being available on `PyPi`, the [`conda-forge` feedstock repo](https://github.com
 should have a PR created by the `conda-forge-bot` that updates the version
 (i.e [the v0.11.0 PR](https://github.com/conda-forge/bhklab-project-template-feedstock/pull/4)).
 
-There maintainers defined in the `recipe.yaml` file, who are responsible for
+There are maintainers defined in the `recipe.yaml` file, who are responsible for
 reviewing and merging the PR. If you are a maintainer, make sure all the checks
 are passing, and then merge the PR. This will update the `conda-forge` feedstock
 and trigger a new build of the `bhklab-project-template` package on `conda-forge`.
