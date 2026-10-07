@@ -18,12 +18,12 @@ jobs:
             group: ${{ github.workflow }}-${{ github.ref }}
 
         steps:
-            - uses: GoogleCloudPlatform/release-please-action@v4
+            - uses: googleapis/release-please-action@v5.0.0
               id: release
               with:
                   release-type: simple
 
-            - uses: actions/checkout@v4.2.0
+            - uses: actions/checkout@v7.0.1
               if: ${{ steps.release.outputs.release_created }}
               with:
                   fetch-depth: 0
